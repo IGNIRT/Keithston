@@ -1,0 +1,20 @@
+html,
+body {
+    font-weight: 600;
+    position: relative;
+    background-color: white;
+    max-width: 100%; 
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; 
+}
+
+/* Добавьте в начало документа или подключите через link */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300..900&display=swap');
+html,
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    /* Добавлен fallback на случай, если Inter не загрузится */
+}

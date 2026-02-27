@@ -1,0 +1,29 @@
+.section__1 {
+    position: relative;
+    padding-top: 150px;
+    text-align: center;
+    color: white;
+    background-color: transparent;
+    z-index: 1;
+}
+.section__1 .title {
+    position: absolute;
+    width: 167px;
+    height: 17px;
+    left: 83px;
+    top: 277px;
+    color: #E9BD8C;
+}
+.section__1 .subtitle {
+    position: absolute;
+    width: 424px;
+    height: 148px;
+    left: 80px;
+    top: 318px;
+    font-family: 'Sansita Swashed';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 74px;
+    line-height: 89px;
+    color: #F5F5F5;
+}

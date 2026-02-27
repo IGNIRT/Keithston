@@ -1,0 +1,12 @@
+@import "body.css";
+@import "header.css";
+@import "footer.css";
+@import "section__1.css";
+
+.main {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: visible; /* Было: hidden */
+}
+
