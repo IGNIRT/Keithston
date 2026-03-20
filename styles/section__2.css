@@ -1,0 +1,64 @@
+.section__2 {
+    position: relative;
+    z-index: 2; /* Чтобы быть выше фона, если он длинный */
+    background-color: #ffffff; /* Белый фон для чистоты */
+    padding: 100px 0;
+    margin-top: 50px; 
+}
+
+/* Центрируем заголовок */
+.section__2 .title {
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 60px;
+    color: #333;
+}
+
+/* Сетка (Grid) для товаров */
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки на ПК */
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.product{
+    position: relative;
+    background-image: url("../images/black_phon.png");
+    z-index: -1;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.product__information-price {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.product__information{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.product-price, .product-name, .add{
+    color:white;
+}
+.add{
+    background: red;
+    border: none;
+}
+
+/* Адаптив для сетки */
+@media (max-width: 1024px) {
+    .products { grid-template-columns: repeat(2, 1fr); } /* 2 колонки */
+    }
+
+    @media (max-width: 600px) {
+        .products { grid-template-columns: 1fr; } /* 1 колонка */
+        }
+        

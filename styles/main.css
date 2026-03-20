@@ -2,7 +2,7 @@
 @import "header.css";
 @import "footer.css";
 @import "section__1.css";
-
+@import "section__2.css";
 .main {
     position: relative;
     width: 100%;
