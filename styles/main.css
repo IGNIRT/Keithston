@@ -3,10 +3,19 @@
 @import "footer.css";
 @import "section__1.css";
 @import "section__2.css";
+@import "section__3.css";
+
 .main {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    overflow: visible; /* Было: hidden */
+    overflow: visible;
 }
-
+@font-face {
+    font-family: 'Sansita Swashed'; 
+    src: url('fonts/SansitaSwashed-Regular.ttf') format('truetype'); 
+    font-weight: 400; 
+    font-style: regular; 
+    font-display: swap;
+    font-size: 74px;
+}

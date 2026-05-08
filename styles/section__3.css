@@ -1,0 +1,34 @@
+.section__3 {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #fff; /* Цвет текста, поменяй под дизайн */
+    text-align: center;
+}
+
+.section__3 .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Чтобы картинка не сплющилась */
+    z-index: -1;
+}
+
+.discount {
+    max-width: 800px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.4); /* Затемнение, чтобы текст читался на любом фоне */
+    border-radius: 15px;
+}
+
+.discount .title {
+    font-family: "Sansita Swashed", system-ui;
+    font-size: 48px;
+    margin-bottom: 15px;
+}

@@ -10,24 +10,23 @@
     color: #E9BD8C;
     margin-bottom: 10px;
     font-size: 17px;
-    /* Убрали absolute */
+
 }
 
 .section__1 .subtitle {
-    width: 424px;
+    width: 448px;
+    height: 235px;
     font-family: 'Sansita Swashed', cursive;
     font-size: 74px;
-    line-height: 89px;
     color: #F5F5F5;
-    margin-bottom: 30px; /* Расстояние до кнопок */
-    /* Убрали absolute */
+    margin-bottom: 30px;
+    margin-top: auto; 
+    font-weight: 400;
 }
 
-/* Контейнер для выравнивания кнопки и ссылки в ряд */
-.buttons-container {
     display: flex;
-    align-items: center; /* Центрирование по вертикали */
-    gap: 20px;           /* Расстояние между кнопкой и ссылкой */
+    align-items: center; 
+    gap: 20px;           
 }
 
 .btn {
