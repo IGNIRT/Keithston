@@ -14,7 +14,6 @@
 
 .section__1 .subtitle {
     width: 448px;
-    /* height: 235px; Лучше убрать фиксированную высоту, чтобы текст не вылезал при изменении размера */
     font-family: 'Sansita Swashed', cursive;
     font-size: 74px;
     color: #F5F5F5;
@@ -28,11 +27,11 @@
     background-color: #E9BD8C;
     border: none;
     cursor: pointer;
-    color: #fff; /* Добавил цвет текста для читаемости */
+    color: #fff; 
 }
 
 .learn-more {
     color: #E9BD8C;
     font-size: 17px;
-    text-decoration: none; /* Исправлено: чаще всего здесь нужно убрать подчеркивание */
+    text-decoration: none; 
 }

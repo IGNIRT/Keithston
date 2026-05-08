@@ -1,12 +1,11 @@
 .section__2 {
     position: relative;
-    z-index: 2; /* Чтобы быть выше фона, если он длинный */
-    background-color: #ffffff; /* Белый фон для чистоты */
+    z-index: 2; 
+    background-color: #ffffff; 
     padding: 100px 0;
     margin-top: 50px; 
 }
 
-/* Центрируем заголовок */
 .section__2 .title {
     text-align: center;
     font-size: 48px;
@@ -14,10 +13,9 @@
     color: #333;
 }
 
-/* Сетка (Grid) для товаров */
 .products {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 колонки на ПК */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 40px;
     max-width: 1200px;
     margin: 0 auto;
@@ -54,12 +52,3 @@
     background: red;
     border: none;
 }
-
-/* Адаптив для сетки */
-@media (max-width: 1024px) {
-    .products { grid-template-columns: repeat(2, 1fr); } /* 2 колонки */
-    }
-
-    @media (max-width: 600px) {
-        .products { grid-template-columns: 1fr; } /* 1 колонка */
-        }
