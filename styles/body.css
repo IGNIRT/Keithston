@@ -3,10 +3,10 @@ body {
     font-weight: 600;
     position: relative;
     background-color: white;
-    max-width: 100%; 
+    max-width: auto; 
     margin: 0;
     padding: 0;
-    width: 100%;
+    width: auto;
     overflow-x: hidden; 
 }
 

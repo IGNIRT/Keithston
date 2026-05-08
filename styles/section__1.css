@@ -1,7 +1,7 @@
 .section__1 {
     padding-top: 150px;
-    padding-left: 80px; /* Отступ слева, как был в ваших координатах */
-    text-align: left;    /* Выравнивание текста по левому краю */
+    padding-left: 80px;
+    text-align: left;
     color: white;
     z-index: 1;
 }
@@ -10,37 +10,29 @@
     color: #E9BD8C;
     margin-bottom: 10px;
     font-size: 17px;
-
 }
 
 .section__1 .subtitle {
     width: 448px;
-    height: 235px;
+    /* height: 235px; Лучше убрать фиксированную высоту, чтобы текст не вылезал при изменении размера */
     font-family: 'Sansita Swashed', cursive;
     font-size: 74px;
     color: #F5F5F5;
     margin-bottom: 30px;
-    margin-top: auto; 
     font-weight: 400;
 }
 
-    display: flex;
-    align-items: center; 
-    gap: 20px;           
-}
 
 .btn {
-    /* Ваши стили для кнопки */
     padding: 10px 25px;
     background-color: #E9BD8C;
     border: none;
     cursor: pointer;
+    color: #fff; /* Добавил цвет текста для читаемости */
 }
 
 .learn-more {
     color: #E9BD8C;
-    margin-bottom: 10px;
     font-size: 17px;
-    text-decoration: none;
+    text-decoration: none; /* Исправлено: чаще всего здесь нужно убрать подчеркивание */
 }
-
