@@ -1,0 +1,43 @@
+.section__6 {
+    padding: 80px 5%;
+    background: #fef6ed;
+}
+.section__6 .title {
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 50px;
+}
+.featured-treats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+.featured-treats > div {
+    text-align: center;
+    background: white;
+    padding: 25px 20px;
+    border-radius: 36px;
+    width: 240px;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+.featured-treats > div:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+}
+.featured-treats .image {
+    width: 100%;
+    border-radius: 28px;
+    margin-bottom: 15px;
+}
+.featured-treats .name {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 10px 0 5px;
+}
+.featured-treats .price {
+    font-size: 24px;
+    font-weight: 800;
+    color: #E9BD8C;
+}

@@ -1,21 +1,55 @@
 @import "body.css";
 @import "header.css";
-@import "footer.css";
 @import "section__1.css";
 @import "section__2.css";
 @import "section__3.css";
+@import "section__4.css";
+@import "section__5.css";
+@import "section__6.css";
+@import "footer.css";
 
 .main {
     position: relative;
-    width: auto;
+    width: 100%;
     min-height: 100vh;
-    overflow: visible;
+    overflow-x: clip;
 }
+
 @font-face {
-    font-family: 'Sansita Swashed'; 
-    src: url('fonts/SansitaSwashed-Regular.ttf') format('truetype'); 
-    font-weight: 400; 
-    font-style: regular; 
+    font-family: 'Sansita Swashed';
+    src: url('../fonts/SansitaSwashed-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
     font-display: swap;
-    font-size: 74px;
+}
+
+@media (max-width: 992px) {
+    .section__1 .subtitle {
+        font-size: 48px;
+    }
+    .discount .title {
+        font-size: 32px;
+    }
+}
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .section__1 {
+        padding-left: 5%;
+        padding-top: 100px;
+    }
+    .section__1 .subtitle {
+        font-size: 36px;
+        max-width: 90%;
+    }
+    .products {
+        grid-template-columns: 1fr;
+    }
+    .product {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 360px;
+    }
 }

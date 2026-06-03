@@ -5,11 +5,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    color: #fff; 
-    text-align: center;
-}
 
+    background-image: url("../images/white_table_bread.png"); 
+    background-color: #f0f0f0; 
+    background-size: cover;
+    background-position: center;
+    color: #333;
+    text-align: center;
+    padding: 60px 20px;
+}
 .section__3 .background {
     position: absolute;
     top: 0;
@@ -17,18 +21,46 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -1;
+    z-index: 0;
 }
 
 .discount {
-    max-width: 800px;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.4); 
-    border-radius: 15px;
+    position: relative;
+    z-index: 1; 
+    max-width: 600px;
+    padding: 40px 20px;
+    background: transparent; /* Убираем темный оверлей */
 }
 
 .discount .title {
-    font-family: "Sansita Swashed", system-ui;
+    font-family: "Sansita Swashed", cursive;
     font-size: 48px;
-    margin-bottom: 15px;
+    color: #8B4513; /* Коричневый цвет заголовка */
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+.discount .subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: #555555; /* Темно-серый цвет текста */
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.section__3 .btn {
+    background-color: #8B4513; 
+    color: #ffffff;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.section__3 .btn:hover {
+    background-color: #A0522D;
 }
