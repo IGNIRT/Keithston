@@ -112,12 +112,13 @@
                 <button class="btn" type="button">Learn More</button>
             </div>
         </section>
-
+        
         <section class="section__4">
             <h2 class="title">Explore More</h2>
+  
             <div class="assortment">
-                <ul class="category-links">
-                    <li><a href="#">Cake</a></li>
+                <ul>
+                    <li><a href="#" class="active">Cake</a></li>
                     <li><a href="#">Muffins</a></li>
                     <li><a href="#">Croissant</a></li>
                     <li><a href="#">Bread</a></li>
@@ -125,13 +126,26 @@
                     <li><a href="#">Favorite</a></li>
                 </ul>
             </div>
+  
             <div class="gallery">
-                <img src="images/gallery_1.png" alt="Assorted pastries display" class="image">
-                <img src="images/gallery_2.png" alt="Fresh croissants" class="image">
-                <img src="images/gallery_3.png" alt="Colorful macarons" class="image">
-                <img src="images/gallery_4.png" alt="Bread selection" class="image">
-                <img src="images/gallery_5.png" alt="Cupcakes with frosting" class="image">
-                <img src="images/gallery_6.png" alt="Fruit tart" class="image">
+                <div class="image-wrapper">
+                <img src="images/gallery_1.png" alt="Muffin" class="image">
+                </div>
+                <div class="image-wrapper">
+                <img src="images/gallery_2.png" alt="Berry Cheesecake" class="image">
+                </div>
+                <div class="image-wrapper">
+                <img src="images/gallery_3.png" alt="Fruit Tart" class="image">
+                </div>
+                <div class="image-wrapper">
+                <img src="images/gallery_4.png" alt="Lemon Cake" class="image">
+                </div>
+                <div class="image-wrapper">
+                <img src="images/gallery_5.png" alt="Chocolate Cake" class="image">
+                </div>
+                <div class="image-wrapper">
+                <img src="images/gallery_6.png" alt="Cupcake" class="image">
+                </div>
             </div>
         </section>
 
@@ -165,9 +179,11 @@
     </main>
 
     <footer class="footer">
-        <div class="footer__content">
-            <div class="footer__brand">
-                <img src="images/logo.png" alt="Keithston Bakery Logo" class="logo">
+    <div class="footer__content">
+        <!-- Верхняя строка: логотип + соцсети -->
+        <div class="footer__brand">
+            <img src="images/logo.png" alt="Keithston Bakery Logo" class="logo">
+            <div class="footer__follow-wrap">
                 <p class="follow">Follow us</p>
                 <div class="social-media">
                     <a href="#" aria-label="Facebook"><img src="images/facebook.png" alt="Facebook"></a>
@@ -176,48 +192,55 @@
                     <a href="#" aria-label="Instagram"><img src="images/instagram.png" alt="Instagram"></a>
                 </div>
             </div>
+        </div>
 
-            <div class="footer__contact">
-                <p class="phone">(456) 789-12301</p>
-                <p class="email">info@modrino.co.uk</p>
-                <p class="address">South 13th street</p>
-                <p class="country">New York, America</p>
-            </div>
+        <!-- Колонка 1: About Us -->
+        <div class="footer__contact">
+            <h3 class="footer-title">About Us</h3>
+            <p class="phone">(456) 789-12301</p>
+            <p class="email">info@modrino.co.uk</p>
+            <p class="address">South 13th street</p>
+            <p class="country">New York, America</p>
+        </div>
 
-            <div class="footer__explore">
-                <p class="footer-title">Explore</p>
-                <ul class="footer-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Services</a></li>
-                </ul>
-            </div>
+        <!-- Колонка 2: Explore -->
+        <div class="footer__explore">
+            <h3 class="footer-title">Explore</h3>
+            <ul class="footer-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Services</a></li>
+            </ul>
+        </div>
 
-            <div class="footer__news">
-                <p class="footer-title">Recent News</p>
-                <div class="news-list">
-                    <div class="news-item">
-                        <img src="images/Mascarpone.png" alt="Mascarpone pastry">
-                        <div class="news-text">
-                            <p class="date">June 14, 2024</p>
-                            <p class="news">Puff pastry bliss.</p>
-                        </div>
+        <!-- Колонка 3: Recent News -->
+        <div class="footer__news">
+            <h3 class="footer-title">Recent News</h3>
+            <div class="news-list">
+                <div class="news-item">
+                    <img src="images/Mascarpone.png" alt="Mascarpone pastry">
+                    <div class="news-text">
+                        <p class="date">June 14, 2024</p>
+                        <p class="news">Puff pastry bliss.</p>
                     </div>
-                    <div class="news-item">
-                        <img src="images/Piroshenoe.png" alt="Fruit pie">
-                        <div class="news-text">
-                            <p class="date">June 14, 2024</p>
-                            <p class="news">Puff pastry bliss.</p>
-                        </div>
+                </div>
+                <div class="news-item">
+                    <img src="images/Piroshenoe.png" alt="Fruit pie">
+                    <div class="news-text">
+                        <p class="date">June 14, 2024</p>
+                        <p class="news">Puff pastry bliss.</p>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Копирайт -->
         <div class="footer__copyright">
             <p>© 2024 Bake House. All rights reserved</p>
         </div>
-    </footer>
+    </div>
+</footer>
 
     <script src="scripts/main.js"></script>
 </body>

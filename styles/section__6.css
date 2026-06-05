@@ -1,43 +1,115 @@
 .section__6 {
-    padding: 80px 5%;
-    background: #fef6ed;
+  padding: 80px 5%;
+  background: #fff9f5;
 }
+
 .section__6 .title {
-    text-align: center;
-    font-size: 48px;
-    margin-bottom: 50px;
+  text-align: center;
+  font-family: 'Sansita Swashed', cursive;
+  font-size: 48px;
+  margin-bottom: 60px;
+  font-weight: 700;
+  color: #2d2a24;
 }
+
 .featured-treats {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.featured-treats > div {
-    text-align: center;
-    background: white;
-    padding: 25px 20px;
-    border-radius: 36px;
-    width: 240px;
-    transition: 0.3s;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+
+.featured-treats .treat-card {
+  text-align: center;
+  background: transparent;
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+  flex: 0 1 calc(33.333% - 20px);
+  max-width: 360px;
 }
-.featured-treats > div:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+
+.featured-treats .treat-card:hover {
+  transform: translateY(-8px);
 }
+
 .featured-treats .image {
-    width: 100%;
-    border-radius: 28px;
-    margin-bottom: 15px;
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 15px;
+  display: block;
 }
+
 .featured-treats .name {
-    font-size: 22px;
-    font-weight: 700;
-    margin: 10px 0 5px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #2d2a24;
+  margin: 0;
+  display: inline-block;
 }
+
 .featured-treats .price {
-    font-size: 24px;
-    font-weight: 800;
-    color: #E9BD8C;
+  font-size: 20px;
+  font-weight: 700;
+  color: #2d2a24;
+  margin: 0 0 0 15px;
+  display: inline-block;
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+  .featured-treats .treat-card {
+    flex: 0 1 calc(50% - 15px);
+  }
+  
+  .section__6 .title {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section__6 {
+    padding: 60px 5%;
+  }
+  
+  .section__6 .title {
+    font-size: 38px;
+    margin-bottom: 40px;
+  }
+  
+  .featured-treats .treat-card {
+    flex: 0 1 100%;
+    max-width: 400px;
+  }
+  
+  .featured-treats .image {
+    height: 300px;
+  }
+  
+  .featured-treats .name,
+  .featured-treats .price {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 576px) {
+  .section__6 {
+    padding: 40px 4%;
+  }
+  
+  .section__6 .title {
+    font-size: 32px;
+  }
+  
+  .featured-treats .image {
+    height: 280px;
+  }
+  
+  .featured-treats .name,
+  .featured-treats .price {
+    font-size: 16px;
+  }
 }
