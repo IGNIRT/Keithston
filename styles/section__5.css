@@ -14,6 +14,7 @@
   text-align: center;
   z-index: 2;
   padding: 40px 30px;
+  animation: fadeInUp 1s ease-out;
 }
 
 .section__5 .title {
@@ -23,6 +24,7 @@
   margin-bottom: 25px;
   font-weight: 700;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeInDown 0.8s ease-out 0.2s both;
 }
 
 .section__5 .about-text {
@@ -32,6 +34,7 @@
   margin-bottom: 35px;
   font-weight: 400;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
 .section__5 .btn {
@@ -45,10 +48,111 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+  box-shadow: 0 4px 15px rgba(184, 92, 56, 0.4);
+}
+
+.section__5 .btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.section__5 .btn:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 .section__5 .btn:hover {
   background: #9a4a2e;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(184, 92, 56, 0.4);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(184, 92, 56, 0.6);
+}
+
+.section__5 .btn:active {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(184, 92, 56, 0.5);
+}
+
+/* Пульсация */
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(184, 92, 56, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(184, 92, 56, 0);
+  }
+}
+
+.section__5 .btn.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Адаптация для 768px */
+@media (max-width: 768px) {
+  .section__5 {
+    padding: 80px 5%;
+    min-height: auto;
+  }
+  
+  .section__5 .about {
+    padding: 30px 20px;
+  }
+  
+  .section__5 .title {
+    font-size: 38px;
+    margin-bottom: 20px;
+  }
+  
+  .section__5 .about-text {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+  }
+  
+  .section__5 .btn {
+    padding: 14px 35px;
+    font-size: 15px;
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .section__5 .btn:hover {
+    transform: translateY(-2px) scale(1.03);
+  }
+  
+  .section__5 .btn.pulse {
+    animation: none;
+  }
 }
