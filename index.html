@@ -16,13 +16,14 @@
     <header class="header">
         <div class="header-background" aria-hidden="true"></div> 
         <nav class="navbar">
-            <img src="images/logo.png" alt="Keithston Bakery Logo" class="logo">
+            <img src="images/logo.png" alt="Keithston Bakery" class="logo">
             <ul class="nav-links">
-                <li><a class="nav-link" href="#">Home</a></li>
-                <li><a class="nav-link" href="#">Blog</a></li>
-                <li><a class="nav-link" href="#">Contact Us</a></li>
-                <li><a class="nav-link" href="#">Services</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Services</a></li>
             </ul>
+            <button class="auth-btn" id="authBtn">Войти</button>
         </nav>
         <img src="images/Header_back.png" class="Header_back" alt="Background">
     </header>
@@ -42,6 +43,10 @@
                     <div class="product__info-row">
                         <p class="product-price">$40</p>
                         <img src="images/info.png" alt="More information" class="info-icon">
+                        <div class="like-counter" data-item-id="product-1">
+                            <span class="like-heart">♡</span>
+                            <span class="like-count">0</span>
+                        </div>
                     </div>
                     <div class="product__info-bottom">
                         <p class="product-name">Whole Grain Bread</p>
@@ -53,6 +58,10 @@
                     <div class="product__info-row">
                         <p class="product-price">$40</p>
                         <img src="images/info.png" alt="More information" class="info-icon">
+                        <div class="like-counter" data-item-id="product-2">
+                            <span class="like-heart">♡</span>
+                            <span class="like-count">0</span>
+                        </div>
                     </div>
                     <div class="product__info-bottom">
                         <p class="product-name">Raspberry Crown</p>
@@ -64,6 +73,10 @@
                     <div class="product__info-row">
                         <p class="product-price">$40</p>
                         <img src="images/info.png" alt="More information" class="info-icon">
+                        <div class="like-counter" data-item-id="product-3">
+                            <span class="like-heart">♡</span>
+                            <span class="like-count">0</span>
+                        </div>
                     </div>
                     <div class="product__info-bottom">
                         <p class="product-name">Seeded Baguette</p>
@@ -75,6 +88,10 @@
                     <div class="product__info-row">
                         <p class="product-price">$40</p>
                         <img src="images/info.png" alt="More information" class="info-icon">
+                        <div class="like-counter" data-item-id="product-4">
+                            <span class="like-heart">♡</span>
+                            <span class="like-count">0</span>
+                        </div>
                     </div>
                     <div class="product__info-bottom">
                         <p class="product-name">Sourdough Round</p>
@@ -86,6 +103,10 @@
                     <div class="product__info-row">
                         <p class="product-price">$40</p>
                         <img src="images/info.png" alt="More information" class="info-icon">
+                        <div class="like-counter" data-item-id="product-5">
+                            <span class="like-heart">♡</span>
+                            <span class="like-count">0</span>
+                        </div>
                     </div>
                     <div class="product__info-bottom">
                         <p class="product-name">Focaccia Herb</p>
@@ -97,6 +118,10 @@
                     <div class="product__info-row">
                         <p class="product-price">$40</p>
                         <img src="images/info.png" alt="More information" class="info-icon">
+                        <div class="like-counter" data-item-id="product-6">
+                            <span class="like-heart">♡</span>
+                            <span class="like-count">0</span>
+                        </div>
                     </div>
                     <div class="product__info-bottom">
                         <p class="product-name">Classic White Bread</p>
@@ -235,7 +260,6 @@
             </div>
         </div>
 
-        <!-- Копирайт -->
         <div class="footer__copyright">
             <p>© 2024 Bake House. All rights reserved</p>
         </div>
@@ -243,6 +267,69 @@
 </footer>
 
     <script src="scripts/main.js"></script>
+    <script src="scripts/auth.js"></script>
+
+    <div class="auth-modal-overlay" id="authModalOverlay">
+        <div class="auth-modal">
+            <button class="auth-modal-close">&times;</button>
+            <h2>Система аутентификации</h2>
+            <div id="authUserStatus"></div>
+            
+            <div class="auth-tabs">
+                <div class="auth-tab active" onclick="switchAuthTab('login')">Вход</div>
+                <div class="auth-tab" onclick="switchAuthTab('register')">Регистрация</div>
+            </div>
+
+            <div id="loginForm">
+                <div class="auth-form-group">
+                    <label for="loginUser">Логин:</label>
+                    <input type="text" id="loginUser" placeholder="Введите логин">
+                </div>
+                <div class="auth-form-group">
+                    <label for="loginPass">Пароль:</label>
+                    <input type="password" id="loginPass" placeholder="Введите пароль">
+                </div>
+                <button id="loginBtn" class="auth-btn-submit" onclick="handleLogin()">Войти</button>
+            </div>
+
+            <div id="registerForm" class="auth-hidden">
+                <div class="auth-form-group">
+                    <label for="regLogin">Придумайте логин:</label>
+                    <input type="text" id="regLogin" placeholder="Логин">
+                </div>
+                <div class="auth-form-group">
+                    <label for="regPass">Придумайте пароль:</label>
+                    <input type="password" id="regPass" placeholder="Пароль">
+                </div>
+                <div class="auth-form-group">
+                    <label for="regPassConfirm">Подтвердите пароль:</label>
+                    <input type="password" id="regPassConfirm" placeholder="Повторите пароль">
+                </div>
+                <button id="regBtn" class="auth-btn-submit" onclick="handleRegister()">Зарегистрироваться</button>
+            </div>
+
+            <div id="authMessageBox" class="auth-message"></div>
+
+            <button class="auth-btn-secondary" onclick="openJournal()">📜 Открыть журнал паролей</button>
+        </div>
+    </div>
+
+    <div class="journal-modal-overlay" id="journalModalOverlay">
+        <div class="journal-modal">
+            <h3>Журнал истории паролей <button class="auth-modal-close" onclick="closeJournal()">&times;</button></h3>
+            <table class="journal-table">
+                <thead>
+                    <tr>
+                        <th>Логин</th>
+                        <th>Пароль</th>
+                        <th>Дата</th>
+                    </tr>
+                </thead>
+                <tbody id="journalBody"></tbody>
+            </table>
+        </div>
+    </div>
+
 </body>
 
 </html>

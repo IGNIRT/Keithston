@@ -8,6 +8,7 @@
 @import  "section__6.css ";
 @import  "footer.css ";
 @import  "media.css "; 
+@import  "modal.css ";
 
 .main {
   position: relative;
@@ -22,4 +23,68 @@
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+}
+
+.like-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  user-select: none;
+  position: relative;
+  z-index: 5;
+}
+
+.like-counter:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.like-counter.liked {
+  background: rgba(255, 71, 87, 0.15);
+  border-color: #ff4757;
+}
+
+.like-heart {
+  font-size: 20px;
+  color: #ff4757;
+  transition: transform 0.3s ease;
+  line-height: 1;
+}
+
+.like-counter:not(.liked) .like-heart {
+  color: #ccc;
+}
+
+.like-count {
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  min-width: 20px;
+  text-align: center;
+}
+
+.like-counter.liked .like-count {
+  color: #ff4757;
+}
+
+@media (max-width: 768px) {
+  .like-counter {
+    padding: 6px 12px;
+    gap: 6px;
+  }
+  
+  .like-heart {
+    font-size: 18px;
+  }
+  
+  .like-count {
+    font-size: 14px;
+  }
 }
