@@ -294,20 +294,24 @@
 
             <div id="registerForm" class="auth-hidden">
                 <div class="auth-form-group">
+                    <label for="regName">Имя:</label>
+                    <input type="text" id="regName" placeholder="Ваше имя" required>
+                </div>
+                <div class="auth-form-group">
                     <label for="regLogin">Придумайте логин:</label>
-                    <input type="text" id="regLogin" placeholder="Логин">
+                    <input type="text" id="regLogin" placeholder="Логин" required>
                 </div>
                 <div class="auth-form-group">
                     <label for="regPass">Придумайте пароль:</label>
-                    <input type="password" id="regPass" placeholder="Пароль">
+                    <input type="password" id="regPass" placeholder="Пароль" required>
                 </div>
                 <div class="auth-form-group">
                     <label for="regPassConfirm">Подтвердите пароль:</label>
-                    <input type="password" id="regPassConfirm" placeholder="Повторите пароль">
+                    <input type="password" id="regPassConfirm" placeholder="Повторите пароль" required>
                 </div>
                 <button id="regBtn" class="auth-btn-submit" onclick="handleRegister()">Зарегистрироваться</button>
             </div>
-
+            
             <div id="authMessageBox" class="auth-message"></div>
 
             <button class="auth-btn-secondary" onclick="openJournal()">📜 Открыть журнал паролей</button>

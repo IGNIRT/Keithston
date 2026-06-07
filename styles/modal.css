@@ -298,7 +298,35 @@
   background: #fff3e0;
   color: #e65100;
 }
+/* ===== СТИЛИ ДЛЯ ВАЛИДАЦИИ ===== */
+.auth-form-group input.error {
+  border-color: #c62828;
+  background: #ffebee;
+}
 
+.auth-form-group input.success {
+  border-color: #2e7d32;
+  background: #e8f5e9;
+}
+
+.field-error {
+  color: #c62828;
+  font-size: 12px;
+  margin-top: 5px;
+  padding-left: 5px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 /* ===== АДАПТИВНОСТЬ ===== */
 @media (max-width: 768px) {
   .auth-btn {
