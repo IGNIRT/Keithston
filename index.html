@@ -30,15 +30,6 @@
 
     <main class="main">
         <div id="page-home" class="page active">
-            <div id="page-services" class="page" style="display: none;">
-                <section class="services-page">
-                    <div class="services-header">
-                        <h1 class="services-page-title">Our Services</h1>
-                        <p class="services-page-subtitle">Everything you need for the perfect celebration</p>
-                    </div>
-                    <div class="services-container" id="services-list"></div>
-                </section>
-            </div>
             <div id="page-contact" class="page" style="display: none;">
                 <section class="contact-page">
                     <div class="contact-header">
@@ -281,7 +272,6 @@
 
     <footer class="footer">
         <div class="footer__content">
-            <!-- Верхняя строка: логотип + соцсети -->
             <div class="footer__brand">
                 <img src="images/logo.png" alt="Keithston Bakery Logo" class="logo">
                 <div class="footer__follow-wrap">
@@ -303,8 +293,6 @@
                 <p class="address">South 13th street</p>
                 <p class="country">New York, America</p>
             </div>
-
-            <!-- Колонка 2: Explore -->
             <div class="footer__explore">
                 <h3 class="footer-title">Explore</h3>
                 <ul class="footer-links">
@@ -315,7 +303,6 @@
                 </ul>
             </div>
 
-            <!-- Колонка 3: Recent News -->
             <div class="footer__news">
                 <h3 class="footer-title">Recent News</h3>
                 <div class="news-list">
@@ -350,66 +337,75 @@
     <div class="auth-modal-overlay" id="authModalOverlay">
         <div class="auth-modal">
             <button class="auth-modal-close">&times;</button>
-            <h2>Система аутентификации</h2>
+            <h2>Authentication System</h2>
             <div id="authUserStatus"></div>
             
             <div class="auth-tabs">
-                <div class="auth-tab active" onclick="switchAuthTab('login')">Вход</div>
-                <div class="auth-tab" onclick="switchAuthTab('register')">Регистрация</div>
+                <div class="auth-tab active" onclick="switchAuthTab('login')">Login</div>
+                <div class="auth-tab" onclick="switchAuthTab('register')">Register</div>
             </div>
 
             <div id="loginForm">
                 <div class="auth-form-group">
-                    <label for="loginUser">Логин:</label>
-                    <input type="text" id="loginUser" placeholder="Введите логин">
+                    <label for="loginUser">Login:</label>
+                    <input type="text" id="loginUser" placeholder="Enter login">
                 </div>
                 <div class="auth-form-group">
-                    <label for="loginPass">Пароль:</label>
-                    <input type="password" id="loginPass" placeholder="Введите пароль">
+                    <label for="loginPass">Password:</label>
+                    <input type="password" id="loginPass" placeholder="Enter password">
                 </div>
-                <button id="loginBtn" class="auth-btn-submit" onclick="handleLogin()">Войти</button>
+                <button id="loginBtn" class="auth-btn-submit" onclick="handleLogin()">Login</button>
             </div>
 
             <div id="registerForm" class="auth-hidden">
                 <div class="auth-form-group">
-                    <label for="regName">Имя:</label>
-                    <input type="text" id="regName" placeholder="Ваше имя" required>
+                    <label for="regName">Name:</label>
+                    <input type="text" id="regName" placeholder="Your name" required>
                 </div>
                 <div class="auth-form-group">
-                    <label for="regLogin">Придумайте логин:</label>
-                    <input type="text" id="regLogin" placeholder="Логин" required>
+                    <label for="regLogin">Choose a login:</label>
+                    <input type="text" id="regLogin" placeholder="Login" required>
                 </div>
                 <div class="auth-form-group">
-                    <label for="regPass">Придумайте пароль:</label>
-                    <input type="password" id="regPass" placeholder="Пароль" required>
+                    <label for="regPass">Choose a password:</label>
+                    <input type="password" id="regPass" placeholder="Password" required>
                 </div>
                 <div class="auth-form-group">
-                    <label for="regPassConfirm">Подтвердите пароль:</label>
-                    <input type="password" id="regPassConfirm" placeholder="Повторите пароль" required>
+                    <label for="regPassConfirm">Confirm password:</label>
+                    <input type="password" id="regPassConfirm" placeholder="Repeat password" required>
                 </div>
-                <button id="regBtn" class="auth-btn-submit" onclick="handleRegister()">Зарегистрироваться</button>
+                <button id="regBtn" class="auth-btn-submit" onclick="handleRegister()">Register</button>
             </div>
             
             <div id="authMessageBox" class="auth-message"></div>
 
-            <button class="auth-btn-secondary" onclick="openJournal()">📜 Открыть журнал паролей</button>
+            <button class="auth-btn-secondary" onclick="openJournal()">📜 Open Password Journal</button>
         </div>
     </div>
 
     <div class="journal-modal-overlay" id="journalModalOverlay">
         <div class="journal-modal">
-            <h3>Журнал истории паролей <button class="auth-modal-close" onclick="closeJournal()">&times;</button></h3>
+            <h3>Password Journal <button class="auth-modal-close" onclick="closeJournal()">&times;</button></h3>
             <table class="journal-table">
                 <thead>
                     <tr>
-                        <th>Логин</th>
-                        <th>Пароль</th>
-                        <th>Дата</th>
+                        <th>Login</th>
+                        <th>Password</th>
+                        <th>Date</th>
                     </tr>
                 </thead>
                 <tbody id="journalBody"></tbody>
             </table>
         </div>
+    </div>
+    <div id="page-services" class="page" style="display: none;">
+        <section class="services-page">
+            <div class="services-header">
+                <h1 class="services-page-title">Our Services</h1>
+                <p class="services-page-subtitle">Everything you need for the perfect celebration</p>
+            </div>
+            <div class="services-container" id="services-list"></div>
+        </section>
     </div>
 
 </body>
