@@ -15,259 +15,337 @@
 <body>
     <header class="header">
         <div class="header-background" aria-hidden="true"></div> 
-        <nav class="navbar">
-            <img src="images/logo.png" alt="Keithston Bakery" class="logo">
-            <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Services</a></li>
-            </ul>
-            <button class="auth-btn" id="authBtn">Войти</button>
-        </nav>
+            <nav class="navbar">
+                <img src="images/logo.png" alt="Keithston Bakery" class="logo">
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                </ul>
+                <button class="auth-btn" id="authBtn">Login</button>
+            </nav>
         <img src="images/Header_back.png" class="Header_back" alt="Background">
     </header>
 
     <main class="main">
-        <section class="section__1">
-            <h1 class="title">Delicious Cafe</h1>
-            <p class="subtitle">Sweet Treats, Perfect Eats</p>
-            <button class="btn" type="button">Shop Now</button>
-            <a href="#" class="learn-more">Learn More</a>
-        </section>
-        <section class="section__2">
-            <h2 class="title">Top Products</h2>
-            <div class="products">
-                <div class="product">
-                    <img src="images/danish-pastry-with-jam.png" alt="Danish pastry with jam" class="product-image">
-                    <div class="product__info-row">
-                        <p class="product-price">$40</p>
-                        <img src="images/info.png" alt="More information" class="info-icon">
-                        <div class="like-counter" data-item-id="product-1">
-                            <span class="like-heart">♡</span>
-                            <span class="like-count">0</span>
-                        </div>
+        <div id="page-home" class="page active">
+            <div id="page-services" class="page" style="display: none;">
+                <section class="services-page">
+                    <div class="services-header">
+                        <h1 class="services-page-title">Our Services</h1>
+                        <p class="services-page-subtitle">Everything you need for the perfect celebration</p>
                     </div>
-                    <div class="product__info-bottom">
-                        <p class="product-name">Whole Grain Bread</p>
-                        <button class="add" type="button">Add</button>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="images/malina.png" alt="Raspberry pastry" class="product-image">
-                    <div class="product__info-row">
-                        <p class="product-price">$40</p>
-                        <img src="images/info.png" alt="More information" class="info-icon">
-                        <div class="like-counter" data-item-id="product-2">
-                            <span class="like-heart">♡</span>
-                            <span class="like-count">0</span>
-                        </div>
-                    </div>
-                    <div class="product__info-bottom">
-                        <p class="product-name">Raspberry Crown</p>
-                        <button class="add" type="button">Add</button>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="images/baton_semechki.png" alt="Seeded baguette" class="product-image">
-                    <div class="product__info-row">
-                        <p class="product-price">$40</p>
-                        <img src="images/info.png" alt="More information" class="info-icon">
-                        <div class="like-counter" data-item-id="product-3">
-                            <span class="like-heart">♡</span>
-                            <span class="like-count">0</span>
-                        </div>
-                    </div>
-                    <div class="product__info-bottom">
-                        <p class="product-name">Seeded Baguette</p>
-                        <button class="add" type="button">Add</button>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="images/krug_hleb.png" alt="Round sourdough bread" class="product-image">
-                    <div class="product__info-row">
-                        <p class="product-price">$40</p>
-                        <img src="images/info.png" alt="More information" class="info-icon">
-                        <div class="like-counter" data-item-id="product-4">
-                            <span class="like-heart">♡</span>
-                            <span class="like-count">0</span>
-                        </div>
-                    </div>
-                    <div class="product__info-bottom">
-                        <p class="product-name">Sourdough Round</p>
-                        <button class="add" type="button">Add</button>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="images/pizza_hleb.png" alt="Focaccia style bread" class="product-image">
-                    <div class="product__info-row">
-                        <p class="product-price">$40</p>
-                        <img src="images/info.png" alt="More information" class="info-icon">
-                        <div class="like-counter" data-item-id="product-5">
-                            <span class="like-heart">♡</span>
-                            <span class="like-count">0</span>
-                        </div>
-                    </div>
-                    <div class="product__info-bottom">
-                        <p class="product-name">Focaccia Herb</p>
-                        <button class="add" type="button">Add</button>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="images/white_bread.png" alt="Classic white loaf" class="product-image">
-                    <div class="product__info-row">
-                        <p class="product-price">$40</p>
-                        <img src="images/info.png" alt="More information" class="info-icon">
-                        <div class="like-counter" data-item-id="product-6">
-                            <span class="like-heart">♡</span>
-                            <span class="like-count">0</span>
-                        </div>
-                    </div>
-                    <div class="product__info-bottom">
-                        <p class="product-name">Classic White Bread</p>
-                        <button class="add" type="button">Add</button>
-                    </div>
-                </div>
+                    <div class="services-container" id="services-list"></div>
+                </section>
             </div>
-        </section>
-        <section class="section__3">
-            <div class="discount">
-                <h2 class="title">20% Off Your First Order!</h2>
-                <p class="subtitle">Sign up for our newsletter and receive a 20% discount on your first order. Don't miss out on this sweet deal!</p>
-                <button class="btn" type="button">Learn More</button>
+            <div id="page-contact" class="page" style="display: none;">
+                <section class="contact-page">
+                    <div class="contact-header">
+                        <h1 class="contact-page-title">Get In Touch</h1>
+                        <p class="contact-page-subtitle">We'd love to hear from you</p>
+                    </div>
+                    <div class="contact-container">
+                        <div class="contact-info">
+                            <div class="contact-info-item">
+                                <div class="contact-icon">📞</div>
+                                <div>
+                                    <h3>Phone</h3>
+                                    <p>(456) 789-12301</p>
+                                </div>
+                            </div>
+                            <div class="contact-info-item">
+                                <div class="contact-icon">️</div>
+                                <div>
+                                    <h3>Email</h3>
+                                    <p>info@modrino.co.uk</p>
+                                </div>
+                            </div>
+                            <div class="contact-info-item">
+                                <div class="contact-icon">📍</div>
+                                <div>
+                                    <h3>Address</h3>
+                                    <p>South 13th street<br>New York, America</p>
+                                </div>
+                            </div>
+                            <div class="contact-info-item">
+                                <div class="contact-icon">🕐</div>
+                                <div>
+                                    <h3>Working Hours</h3>
+                                    <p>Mon-Fri: 7:00 AM - 8:00 PM<br>Sat-Sun: 8:00 AM - 6:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-group">
+                                <label for="contact-name">Your Name</label>
+                                <input type="text" id="contact-name" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email">Email</label>
+                                <input type="email" id="contact-email" placeholder="example@mail.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-message">Message</label>
+                                <textarea id="contact-message" rows="5" placeholder="Your message..." required></textarea>
+                            </div>
+                            <button type="submit" class="contact-submit-btn">Send Message</button>
+                            <div id="contact-message" class="contact-message" style="display: none;"></div>
+                        </form>
+                    </div>
+                </section>
             </div>
-        </section>
-        
-        <section class="section__4">
-            <h2 class="title">Explore More</h2>
-  
-            <div class="assortment">
-                <ul>
-                    <li><a href="#" class="active">Cake</a></li>
-                    <li><a href="#">Muffins</a></li>
-                    <li><a href="#">Croissant</a></li>
-                    <li><a href="#">Bread</a></li>
-                    <li><a href="#">Tart</a></li>
-                    <li><a href="#">Favorite</a></li>
-                </ul>
+            <div id="page-blog" class="page" style="display: none;">
+                <section class="blog-page">
+                    <div class="blog-header">
+                        <h1 class="blog-page-title">Our Blog</h1>
+                        <p class="blog-page-subtitle">Stories, recipes, and news from the baking world</p>
+                    </div>
+                    <div class="blog-container" id="blog-posts"></div>
+                </section>
             </div>
-  
-            <div class="gallery">
-                <div class="image-wrapper">
-                <img src="images/gallery_1.png" alt="Muffin" class="image">
+            <section class="section__1">
+                <h1 class="title">Delicious Cafe</h1>
+                <p class="subtitle">Sweet Treats, Perfect Eats</p>
+                <button class="btn" type="button">Shop Now</button>
+                <a href="#" class="learn-more">Learn More</a>
+            </section>
+            <section class="section__2">
+                <h2 class="title">Top Products</h2>
+                <div class="products">
+                    <div class="product">
+                        <img src="images/danish-pastry-with-jam.png" alt="Danish pastry with jam" class="product-image">
+                        <div class="product__info-row">
+                            <p class="product-price">$40</p>
+                            <img src="images/info.png" alt="More information" class="info-icon">
+                            <div class="like-counter" data-item-id="product-1">
+                                <span class="like-heart">♡</span>
+                                <span class="like-count">0</span>
+                            </div>
+                        </div>
+                        <div class="product__info-bottom">
+                            <p class="product-name">Whole Grain Bread</p>
+                            <button class="add" type="button">Add</button>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <img src="images/malina.png" alt="Raspberry pastry" class="product-image">
+                        <div class="product__info-row">
+                            <p class="product-price">$40</p>
+                            <img src="images/info.png" alt="More information" class="info-icon">
+                            <div class="like-counter" data-item-id="product-2">
+                                <span class="like-heart">♡</span>
+                                <span class="like-count">0</span>
+                            </div>
+                        </div>
+                        <div class="product__info-bottom">
+                            <p class="product-name">Raspberry Crown</p>
+                            <button class="add" type="button">Add</button>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <img src="images/baton_semechki.png" alt="Seeded baguette" class="product-image">
+                        <div class="product__info-row">
+                            <p class="product-price">$40</p>
+                            <img src="images/info.png" alt="More information" class="info-icon">
+                            <div class="like-counter" data-item-id="product-3">
+                                <span class="like-heart">♡</span>
+                                <span class="like-count">0</span>
+                            </div>
+                        </div>
+                        <div class="product__info-bottom">
+                            <p class="product-name">Seeded Baguette</p>
+                            <button class="add" type="button">Add</button>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <img src="images/krug_hleb.png" alt="Round sourdough bread" class="product-image">
+                        <div class="product__info-row">
+                            <p class="product-price">$40</p>
+                            <img src="images/info.png" alt="More information" class="info-icon">
+                            <div class="like-counter" data-item-id="product-4">
+                                <span class="like-heart">♡</span>
+                                <span class="like-count">0</span>
+                            </div>
+                        </div>
+                        <div class="product__info-bottom">
+                            <p class="product-name">Sourdough Round</p>
+                            <button class="add" type="button">Add</button>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <img src="images/pizza_hleb.png" alt="Focaccia style bread" class="product-image">
+                        <div class="product__info-row">
+                            <p class="product-price">$40</p>
+                            <img src="images/info.png" alt="More information" class="info-icon">
+                            <div class="like-counter" data-item-id="product-5">
+                                <span class="like-heart">♡</span>
+                                <span class="like-count">0</span>
+                            </div>
+                        </div>
+                        <div class="product__info-bottom">
+                            <p class="product-name">Focaccia Herb</p>
+                            <button class="add" type="button">Add</button>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <img src="images/white_bread.png" alt="Classic white loaf" class="product-image">
+                        <div class="product__info-row">
+                            <p class="product-price">$40</p>
+                            <img src="images/info.png" alt="More information" class="info-icon">
+                            <div class="like-counter" data-item-id="product-6">
+                                <span class="like-heart">♡</span>
+                                <span class="like-count">0</span>
+                            </div>
+                        </div>
+                        <div class="product__info-bottom">
+                            <p class="product-name">Classic White Bread</p>
+                            <button class="add" type="button">Add</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="image-wrapper">
-                <img src="images/gallery_2.png" alt="Berry Cheesecake" class="image">
+            </section>
+            <section class="section__3">
+                <div class="discount">
+                    <h2 class="title">20% Off Your First Order!</h2>
+                    <p class="subtitle">Sign up for our newsletter and receive a 20% discount on your first order. Don't miss out on this sweet deal!</p>
+                    <button class="btn" type="button">Learn More</button>
                 </div>
-                <div class="image-wrapper">
-                <img src="images/gallery_3.png" alt="Fruit Tart" class="image">
+            </section>
+            
+            <section class="section__4">
+                <h2 class="title">Explore More</h2>
+    
+                <div class="assortment">
+                    <ul>
+                        <li><a href="#" class="active">Cake</a></li>
+                        <li><a href="#">Muffins</a></li>
+                        <li><a href="#">Croissant</a></li>
+                        <li><a href="#">Bread</a></li>
+                        <li><a href="#">Tart</a></li>
+                        <li><a href="#">Favorite</a></li>
+                    </ul>
                 </div>
-                <div class="image-wrapper">
-                <img src="images/gallery_4.png" alt="Lemon Cake" class="image">
+    
+                <div class="gallery">
+                    <div class="image-wrapper">
+                    <img src="images/gallery_1.png" alt="Muffin" class="image">
+                    </div>
+                    <div class="image-wrapper">
+                    <img src="images/gallery_2.png" alt="Berry Cheesecake" class="image">
+                    </div>
+                    <div class="image-wrapper">
+                    <img src="images/gallery_3.png" alt="Fruit Tart" class="image">
+                    </div>
+                    <div class="image-wrapper">
+                    <img src="images/gallery_4.png" alt="Lemon Cake" class="image">
+                    </div>
+                    <div class="image-wrapper">
+                    <img src="images/gallery_5.png" alt="Chocolate Cake" class="image">
+                    </div>
+                    <div class="image-wrapper">
+                    <img src="images/gallery_6.png" alt="Cupcake" class="image">
+                    </div>
                 </div>
-                <div class="image-wrapper">
-                <img src="images/gallery_5.png" alt="Chocolate Cake" class="image">
-                </div>
-                <div class="image-wrapper">
-                <img src="images/gallery_6.png" alt="Cupcake" class="image">
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="section__5">
-            <div class="about">
-                <h2 class="title">About us</h2>
-                <p class="about-text">Keithston is a family-owned bakery that has been serving the community for over 20 years. We are passionate about creating delicious, high-quality baked goods using traditional recipes and the finest ingredients.</p>
-                <button class="btn" type="button">Read More</button>
-            </div>
-        </section>
-        <section class="section__6">
-            <h2 class="title">Featured Treats</h2>
-            <div class="featured-treats">
-                <div class="treat-card">
-                    <img src="images/pasta.png" alt="Puff pastry" class="image">
-                    <p class="name">Puff Pastry</p>
-                    <p class="price">$8</p>
+            <section class="section__5">
+                <div class="about">
+                    <h2 class="title">About us</h2>
+                    <p class="about-text">Keithston is a family-owned bakery that has been serving the community for over 20 years. We are passionate about creating delicious, high-quality baked goods using traditional recipes and the finest ingredients.</p>
+                    <button class="btn" type="button">Read More</button>
                 </div>
-                <div class="treat-card">
-                    <img src="images/Doughnuts.png" alt="Glazed doughnuts" class="image">
-                    <p class="name">Doughnuts</p>
-                    <p class="price">$8</p>
+            </section>
+            <section class="section__6">
+                <h2 class="title">Featured Treats</h2>
+                <div class="featured-treats">
+                    <div class="treat-card">
+                        <img src="images/pasta.png" alt="Puff pastry" class="image">
+                        <p class="name">Puff Pastry</p>
+                        <p class="price">$8</p>
+                    </div>
+                    <div class="treat-card">
+                        <img src="images/Doughnuts.png" alt="Glazed doughnuts" class="image">
+                        <p class="name">Doughnuts</p>
+                        <p class="price">$8</p>
+                    </div>
+                    <div class="treat-card">
+                        <img src="images/Brownies.png" alt="Chocolate brownies" class="image">
+                        <p class="name">Brownies</p>
+                        <p class="price">$8</p>
+                    </div>
                 </div>
-                <div class="treat-card">
-                    <img src="images/Brownies.png" alt="Chocolate brownies" class="image">
-                    <p class="name">Brownies</p>
-                    <p class="price">$8</p>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
 
     <footer class="footer">
-    <div class="footer__content">
-        <!-- Верхняя строка: логотип + соцсети -->
-        <div class="footer__brand">
-            <img src="images/logo.png" alt="Keithston Bakery Logo" class="logo">
-            <div class="footer__follow-wrap">
-                <p class="follow">Follow us</p>
-                <div class="social-media">
-                    <a href="#" aria-label="Facebook"><img src="images/facebook.png" alt="Facebook"></a>
-                    <a href="#" aria-label="Pinterest"><img src="images/pinterest.png" alt="Pinterest"></a>
-                    <a href="#" aria-label="WhatsApp"><img src="images/whats.png" alt="WhatsApp"></a>
-                    <a href="#" aria-label="Instagram"><img src="images/instagram.png" alt="Instagram"></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Колонка 1: About Us -->
-        <div class="footer__contact">
-            <h3 class="footer-title">About Us</h3>
-            <p class="phone">(456) 789-12301</p>
-            <p class="email">info@modrino.co.uk</p>
-            <p class="address">South 13th street</p>
-            <p class="country">New York, America</p>
-        </div>
-
-        <!-- Колонка 2: Explore -->
-        <div class="footer__explore">
-            <h3 class="footer-title">Explore</h3>
-            <ul class="footer-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Services</a></li>
-            </ul>
-        </div>
-
-        <!-- Колонка 3: Recent News -->
-        <div class="footer__news">
-            <h3 class="footer-title">Recent News</h3>
-            <div class="news-list">
-                <div class="news-item">
-                    <img src="images/Mascarpone.png" alt="Mascarpone pastry">
-                    <div class="news-text">
-                        <p class="date">June 14, 2024</p>
-                        <p class="news">Puff pastry bliss.</p>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <img src="images/Piroshenoe.png" alt="Fruit pie">
-                    <div class="news-text">
-                        <p class="date">June 14, 2024</p>
-                        <p class="news">Puff pastry bliss.</p>
+        <div class="footer__content">
+            <!-- Верхняя строка: логотип + соцсети -->
+            <div class="footer__brand">
+                <img src="images/logo.png" alt="Keithston Bakery Logo" class="logo">
+                <div class="footer__follow-wrap">
+                    <p class="follow">Follow us</p>
+                    <div class="social-media">
+                        <a href="#" aria-label="Facebook"><img src="images/facebook.png" alt="Facebook"></a>
+                        <a href="#" aria-label="Pinterest"><img src="images/pinterest.png" alt="Pinterest"></a>
+                        <a href="#" aria-label="WhatsApp"><img src="images/whats.png" alt="WhatsApp"></a>
+                        <a href="#" aria-label="Instagram"><img src="images/instagram.png" alt="Instagram"></a>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="footer__copyright">
-            <p>© 2024 Bake House. All rights reserved</p>
+            <!-- Колонка 1: About Us -->
+            <div class="footer__contact">
+                <h3 class="footer-title">About Us</h3>
+                <p class="phone">(456) 789-12301</p>
+                <p class="email">info@modrino.co.uk</p>
+                <p class="address">South 13th street</p>
+                <p class="country">New York, America</p>
+            </div>
+
+            <!-- Колонка 2: Explore -->
+            <div class="footer__explore">
+                <h3 class="footer-title">Explore</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Services</a></li>
+                </ul>
+            </div>
+
+            <!-- Колонка 3: Recent News -->
+            <div class="footer__news">
+                <h3 class="footer-title">Recent News</h3>
+                <div class="news-list">
+                    <div class="news-item">
+                        <img src="images/Mascarpone.png" alt="Mascarpone pastry">
+                        <div class="news-text">
+                            <p class="date">June 14, 2024</p>
+                            <p class="news">Puff pastry bliss.</p>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <img src="images/Piroshenoe.png" alt="Fruit pie">
+                        <div class="news-text">
+                            <p class="date">June 14, 2024</p>
+                            <p class="news">Puff pastry bliss.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__copyright">
+                <p>© 2024 Bake House. All rights reserved</p>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
     <script src="scripts/main.js"></script>
     <script src="scripts/auth.js"></script>
+    <script src="scripts/routes.js"></script>
+    
 
     <div class="auth-modal-overlay" id="authModalOverlay">
         <div class="auth-modal">
