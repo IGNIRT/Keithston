@@ -1,15 +1,15 @@
-@import  "body.css ";
-@import  "header.css ";
-@import  "section__1.css ";
-@import  "section__2.css ";
-@import  "section__3.css ";
-@import  "section__4.css ";
-@import  "section__5.css ";
-@import  "section__6.css ";
-@import  "footer.css ";
-@import  "media.css "; 
+@import  "body.css";
+@import  "header.css";
+@import  "section__1.css";
+@import  "section__2.css";
+@import  "section__3.css";
+@import  "section__4.css";
+@import  "section__5.css";
+@import  "section__6.css";
+@import  "footer.css";
+@import  "media.css"; 
 @import  "routes.css";
-@import  "modal.css ";
+@import  "modal.css";
 
 .main {
   position: relative;

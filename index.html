@@ -10,91 +10,26 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/media.css">
+    <link rel="stylesheet" href="styles/modal.css">
 </head>
 
 <body>
     <header class="header">
-        <div class="header-background" aria-hidden="true"></div> 
-            <nav class="navbar">
-                <img src="images/logo.png" alt="Keithston Bakery" class="logo">
-                <ul class="nav-links">
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                    <li><a href="#services">Services</a></li>
-                </ul>
-                <button class="auth-btn" id="authBtn">Login</button>
-            </nav>
+        <div class="header-background" aria-hidden="true"></div>
+        <nav class="navbar">
+            <img src="images/logo.png" alt="Keithston Bakery" class="logo">
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#services">Services</a></li>
+            </ul>
+        </nav>
         <img src="images/Header_back.png" class="Header_back" alt="Background">
     </header>
 
     <main class="main">
         <div id="page-home" class="page active">
-            <div id="page-contact" class="page" style="display: none;">
-                <section class="contact-page">
-                    <div class="contact-header">
-                        <h1 class="contact-page-title">Get In Touch</h1>
-                        <p class="contact-page-subtitle">We'd love to hear from you</p>
-                    </div>
-                    <div class="contact-container">
-                        <div class="contact-info">
-                            <div class="contact-info-item">
-                                <div class="contact-icon">📞</div>
-                                <div>
-                                    <h3>Phone</h3>
-                                    <p>(456) 789-12301</p>
-                                </div>
-                            </div>
-                            <div class="contact-info-item">
-                                <div class="contact-icon">️</div>
-                                <div>
-                                    <h3>Email</h3>
-                                    <p>info@modrino.co.uk</p>
-                                </div>
-                            </div>
-                            <div class="contact-info-item">
-                                <div class="contact-icon">📍</div>
-                                <div>
-                                    <h3>Address</h3>
-                                    <p>South 13th street<br>New York, America</p>
-                                </div>
-                            </div>
-                            <div class="contact-info-item">
-                                <div class="contact-icon">🕐</div>
-                                <div>
-                                    <h3>Working Hours</h3>
-                                    <p>Mon-Fri: 7:00 AM - 8:00 PM<br>Sat-Sun: 8:00 AM - 6:00 PM</p>
-                                </div>
-                            </div>
-                        </div>
-                        <form class="contact-form" id="contact-form">
-                            <div class="form-group">
-                                <label for="contact-name">Your Name</label>
-                                <input type="text" id="contact-name" placeholder="John Doe" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="contact-email">Email</label>
-                                <input type="email" id="contact-email" placeholder="example@mail.com" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="contact-message">Message</label>
-                                <textarea id="contact-message" rows="5" placeholder="Your message..." required></textarea>
-                            </div>
-                            <button type="submit" class="contact-submit-btn">Send Message</button>
-                            <div id="contact-message" class="contact-message" style="display: none;"></div>
-                        </form>
-                    </div>
-                </section>
-            </div>
-            <div id="page-blog" class="page" style="display: none;">
-                <section class="blog-page">
-                    <div class="blog-header">
-                        <h1 class="blog-page-title">Our Blog</h1>
-                        <p class="blog-page-subtitle">Stories, recipes, and news from the baking world</p>
-                    </div>
-                    <div class="blog-container" id="blog-posts"></div>
-                </section>
-            </div>
             <section class="section__1">
                 <h1 class="title">Delicious Cafe</h1>
                 <p class="subtitle">Sweet Treats, Perfect Eats</p>
@@ -199,14 +134,15 @@
             <section class="section__3">
                 <div class="discount">
                     <h2 class="title">20% Off Your First Order!</h2>
-                    <p class="subtitle">Sign up for our newsletter and receive a 20% discount on your first order. Don't miss out on this sweet deal!</p>
+                    <p class="subtitle">Sign up for our newsletter and receive a 20% discount on your first order. Don't
+                        miss out on this sweet deal!</p>
                     <button class="btn" type="button">Learn More</button>
                 </div>
             </section>
-            
+
             <section class="section__4">
                 <h2 class="title">Explore More</h2>
-    
+
                 <div class="assortment">
                     <ul>
                         <li><a href="#" class="active">Cake</a></li>
@@ -217,25 +153,25 @@
                         <li><a href="#">Favorite</a></li>
                     </ul>
                 </div>
-    
+
                 <div class="gallery">
                     <div class="image-wrapper">
-                    <img src="images/gallery_1.png" alt="Muffin" class="image">
+                        <img src="images/gallery_1.png" alt="Muffin" class="image">
                     </div>
                     <div class="image-wrapper">
-                    <img src="images/gallery_2.png" alt="Berry Cheesecake" class="image">
+                        <img src="images/gallery_2.png" alt="Berry Cheesecake" class="image">
                     </div>
                     <div class="image-wrapper">
-                    <img src="images/gallery_3.png" alt="Fruit Tart" class="image">
+                        <img src="images/gallery_3.png" alt="Fruit Tart" class="image">
                     </div>
                     <div class="image-wrapper">
-                    <img src="images/gallery_4.png" alt="Lemon Cake" class="image">
+                        <img src="images/gallery_4.png" alt="Lemon Cake" class="image">
                     </div>
                     <div class="image-wrapper">
-                    <img src="images/gallery_5.png" alt="Chocolate Cake" class="image">
+                        <img src="images/gallery_5.png" alt="Chocolate Cake" class="image">
                     </div>
                     <div class="image-wrapper">
-                    <img src="images/gallery_6.png" alt="Cupcake" class="image">
+                        <img src="images/gallery_6.png" alt="Cupcake" class="image">
                     </div>
                 </div>
             </section>
@@ -243,7 +179,9 @@
             <section class="section__5">
                 <div class="about">
                     <h2 class="title">About us</h2>
-                    <p class="about-text">Keithston is a family-owned bakery that has been serving the community for over 20 years. We are passionate about creating delicious, high-quality baked goods using traditional recipes and the finest ingredients.</p>
+                    <p class="about-text">Keithston is a family-owned bakery that has been serving the community for
+                        over 20 years. We are passionate about creating delicious, high-quality baked goods using
+                        traditional recipes and the finest ingredients.</p>
                     <button class="btn" type="button">Read More</button>
                 </div>
             </section>
@@ -268,6 +206,81 @@
                 </div>
             </section>
         </div>
+        <div id="page-services" class="page" style="display: none;">
+            <section class="services-page">
+                <div class="services-header">
+                    <h1 class="services-page-title">Our Services</h1>
+                    <p class="services-page-subtitle">Everything you need for the perfect celebration</p>
+                </div>
+                <div class="services-container" id="services-list"></div>
+            </section>
+        </div>
+        <div id="page-contact" class="page" style="display: none;">
+            <section class="contact-page">
+                <div class="contact-header">
+                    <h1 class="contact-page-title">Get In Touch</h1>
+                    <p class="contact-page-subtitle">We'd love to hear from you</p>
+                </div>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="contact-info-item">
+                            <div class="contact-icon">📞</div>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>(456) 789-12301</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-icon">️</div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>info@modrino.co.uk</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <h3>Address</h3>
+                                <p>South 13th street<br>New York, America</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-icon">🕐</div>
+                            <div>
+                                <h3>Working Hours</h3>
+                                <p>Mon-Fri: 7:00 AM - 8:00 PM<br>Sat-Sun: 8:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="contact-name">Your Name</label>
+                            <input type="text" id="contact-name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email</label>
+                            <input type="email" id="contact-email" placeholder="example@mail.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Message</label>
+                            <textarea id="contact-message" rows="5" placeholder="Your message..." required></textarea>
+                        </div>
+                        <button type="submit" class="contact-submit-btn">Send Message</button>
+                        <div id="contact-message" class="contact-message" style="display: none;"></div>
+                    </form>
+                </div>
+            </section>
+        </div>
+        <div id="page-blog" class="page" style="display: none;">
+            <section class="blog-page">
+                <div class="blog-header">
+                    <h1 class="blog-page-title">Our Blog</h1>
+                    <p class="blog-page-subtitle">Stories, recipes, and news from the baking world</p>
+                </div>
+                <div class="blog-container" id="blog-posts"></div>
+            </section>
+        </div>
+
     </main>
 
     <footer class="footer">
@@ -322,7 +335,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="footer__copyright">
                 <p>© 2024 Bake House. All rights reserved</p>
             </div>
@@ -332,80 +344,93 @@
     <script src="scripts/main.js"></script>
     <script src="scripts/auth.js"></script>
     <script src="scripts/routes.js"></script>
-    
 
     <div class="auth-modal-overlay" id="authModalOverlay">
         <div class="auth-modal">
             <button class="auth-modal-close">&times;</button>
-            <h2>Authentication System</h2>
+            <h2>Система аутентификации</h2>
             <div id="authUserStatus"></div>
-            
+
             <div class="auth-tabs">
-                <div class="auth-tab active" onclick="switchAuthTab('login')">Login</div>
-                <div class="auth-tab" onclick="switchAuthTab('register')">Register</div>
+                <div class="auth-tab active" onclick="switchAuthTab('login')">Вход</div>
+                <div class="auth-tab" onclick="switchAuthTab('register')">Регистрация</div>
             </div>
 
             <div id="loginForm">
-                <div class="auth-form-group">
-                    <label for="loginUser">Login:</label>
-                    <input type="text" id="loginUser" placeholder="Enter login">
+                <div class="login-type-selector" style="margin-bottom: 15px; text-align: center;">
+                    <label style="margin-right: 15px;">
+                        <input type="radio" name="loginType" value="username" checked onchange="toggleLoginMethod()"> По
+                        логину
+                    </label>
+                    <label>
+                        <input type="radio" name="loginType" value="email" onchange="toggleLoginMethod()"> По email
+                    </label>
                 </div>
-                <div class="auth-form-group">
-                    <label for="loginPass">Password:</label>
-                    <input type="password" id="loginPass" placeholder="Enter password">
+
+                <div id="loginByUsername">
+                    <div class="auth-form-group">
+                        <label for="loginUser">Логин:</label>
+                        <input type="text" id="loginUser" placeholder="Введите логин">
+                    </div>
                 </div>
-                <button id="loginBtn" class="auth-btn-submit" onclick="handleLogin()">Login</button>
+
+                <div id="loginByEmail" style="display: none;">
+                    <div class="auth-form-group">
+                        <label for="loginEmail">Email:</label>
+                        <input type="email" id="loginEmail" placeholder="Введите email">
+                    </div>
+                </div>
+
+                <div class="auth-form-group">
+                    <label for="loginPass">Пароль:</label>
+                    <input type="password" id="loginPass" placeholder="Введите пароль">
+                </div>
+                <button id="loginBtn" class="auth-btn-submit" onclick="handleLogin()">Войти</button>
             </div>
 
             <div id="registerForm" class="auth-hidden">
                 <div class="auth-form-group">
-                    <label for="regName">Name:</label>
-                    <input type="text" id="regName" placeholder="Your name" required>
+                    <label for="regName">Имя:</label>
+                    <input type="text" id="regName" placeholder="Ваше имя" required>
                 </div>
                 <div class="auth-form-group">
-                    <label for="regLogin">Choose a login:</label>
-                    <input type="text" id="regLogin" placeholder="Login" required>
+                    <label for="regEmail">Email:</label>
+                    <input type="email" id="regEmail" placeholder="your@email.com" required>
                 </div>
                 <div class="auth-form-group">
-                    <label for="regPass">Choose a password:</label>
-                    <input type="password" id="regPass" placeholder="Password" required>
+                    <label for="regLogin">Придумайте логин:</label>
+                    <input type="text" id="regLogin" placeholder="Логин" required>
                 </div>
                 <div class="auth-form-group">
-                    <label for="regPassConfirm">Confirm password:</label>
-                    <input type="password" id="regPassConfirm" placeholder="Repeat password" required>
+                    <label for="regPass">Придумайте пароль:</label>
+                    <input type="password" id="regPass" placeholder="Пароль" required>
                 </div>
-                <button id="regBtn" class="auth-btn-submit" onclick="handleRegister()">Register</button>
+                <div class="auth-form-group">
+                    <label for="regPassConfirm">Подтвердите пароль:</label>
+                    <input type="password" id="regPassConfirm" placeholder="Повторите пароль" required>
+                </div>
+                <button id="regBtn" class="auth-btn-submit" onclick="handleRegister()">Зарегистрироваться</button>
             </div>
-            
-            <div id="authMessageBox" class="auth-message"></div>
 
-            <button class="auth-btn-secondary" onclick="openJournal()">📜 Open Password Journal</button>
+            <div id="authMessageBox" class="auth-message"></div>
         </div>
     </div>
 
+    <!-- Журнал паролей -->
     <div class="journal-modal-overlay" id="journalModalOverlay">
         <div class="journal-modal">
-            <h3>Password Journal <button class="auth-modal-close" onclick="closeJournal()">&times;</button></h3>
+            <h3>Журнал истории паролей <button class="auth-modal-close" onclick="closeJournal()">&times;</button></h3>
             <table class="journal-table">
                 <thead>
                     <tr>
-                        <th>Login</th>
-                        <th>Password</th>
-                        <th>Date</th>
+                        <th>Логин</th>
+                        <th>Пароль</th>
+                        <th>Дата</th>
                     </tr>
                 </thead>
                 <tbody id="journalBody"></tbody>
             </table>
         </div>
-    </div>
-    <div id="page-services" class="page" style="display: none;">
-        <section class="services-page">
-            <div class="services-header">
-                <h1 class="services-page-title">Our Services</h1>
-                <p class="services-page-subtitle">Everything you need for the perfect celebration</p>
-            </div>
-            <div class="services-container" id="services-list"></div>
-        </section>
     </div>
 
 </body>
