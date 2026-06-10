@@ -1,7 +1,4 @@
-// ===== ДАННЫЕ ДЛЯ КАРТОЧЕК =====
-
 const cards = {
-  // Товары для section__2 (Top Products)
   product_1: {
     id: 'product-1',
     type: 'product',
@@ -51,7 +48,6 @@ const cards = {
     description: 'Soft and fluffy white bread perfect for sandwiches'
   },
 
-  // Featured Treats для section__6
   treat_1: {
     id: 'treat-1',
     type: 'treat',
@@ -74,7 +70,6 @@ const cards = {
     price: 8
   },
 
-  // Посты для страницы Blog
   blog_1: {
     id: 'blog-1',
     type: 'blog',
@@ -124,7 +119,6 @@ const cards = {
     excerpt: 'Introducing new flavors and seasonal offerings...'
   },
 
-  // Услуги для страницы Services
   service_1: {
     id: 'service-1',
     type: 'service',
@@ -175,7 +169,6 @@ const cards = {
   }
 };
 
-// ===== ФУНКЦИИ ДЛЯ ПОЛУЧЕНИЯ КАРТОЧЕК (ИНТЕРФЕЙС) =====
 
 /**
  * Получение карточки по ID
@@ -203,8 +196,6 @@ function getCardsByType(type) {
 function getCardsByFilter(filterFn) {
   return Object.values(cards).filter(filterFn);
 }
-
-// ===== ФУНКЦИИ ДЛЯ СОЗДАНИЯ HTML ШАБЛОНОВ =====
 
 /**
  * Создание HTML шаблона для карточки товара
@@ -281,38 +272,24 @@ function createServiceCardTemplate(card) {
   `;
 }
 
-// ===== ФУНКЦИИ ДЛЯ ВСТАВКИ КАРТОЧЕК В DOM =====
-
-/**
- * Рендеринг карточек товаров в section__2
- * Использует DOM для поиска контейнера и вставки карточек
- */
 function renderProducts() {
-  // Поиск контейнера в DOM
   const container = document.querySelector('.products');
   if (!container) {
     console.error('Контейнер .products не найден');
     return;
   }
 
-  // Получение карточек типа product
   const products = getCardsByType('product');
   
-  // Создание HTML с использованием шаблонных строк
   const html = products.map(card => createProductCardTemplate(card)).join('');
   
-  // Вставка в DOM
   container.innerHTML = html;
   
-  // Инициализация обработчиков событий для новых элементов
   initProductEvents();
   
-  console.log(`✅ Отрисовано товаров: ${products.length}`);
+  console.log(`Отрисовано товаров: ${products.length}`);
 }
 
-/**
- * Рендеринг карточек Featured Treats в section__6
- */
 function renderTreats() {
   const container = document.querySelector('.featured-treats');
   if (!container) {
@@ -325,7 +302,7 @@ function renderTreats() {
   
   container.innerHTML = html;
   
-  console.log(`✅ Отрисовано featured treats: ${treats.length}`);
+  console.log(`Отрисовано featured treats: ${treats.length}`);
 }
 
 /**
@@ -344,10 +321,9 @@ function renderBlogPosts(containerId = 'blog-posts') {
   
   container.innerHTML = html;
   
-  // Инициализация обработчиков для постов блога
   initBlogEvents();
   
-  console.log(`✅ Отрисовано постов блога: ${posts.length}`);
+  console.log(`Отрисовано постов блога: ${posts.length}`);
 }
 
 /**
@@ -366,27 +342,18 @@ function renderServices(containerId = 'services-list') {
   
   container.innerHTML = html;
   
-  // Инициализация обработчиков для услуг
   initServiceEvents();
   
-  console.log(`✅ Отрисовано услуг: ${services.length}`);
+  console.log(`Отрисовано услуг: ${services.length}`);
 }
 
-// ===== ФУНКЦИИ ОБРАБОТКИ СОБЫТИЙ (EVENTS) =====
-
-/**
- * Инициализация обработчиков событий для товаров
- * Использует делегирование событий для эффективности
- */
 function initProductEvents() {
   const productsContainer = document.querySelector('.products');
   if (!productsContainer) return;
 
-  // Делегирование событий - один обработчик на весь контейнер
   productsContainer.addEventListener('click', function(event) {
     const target = event.target;
     
-    // Обработка клика по кнопке Add
     if (target.classList.contains('add')) {
       const cardId = target.getAttribute('data-card-id');
       const card = getCardById(cardId);
@@ -405,17 +372,12 @@ function initProductEvents() {
       }
     }
     
-    // Обработка клика по счётчику лайков
     if (target.closest('.like-counter')) {
       const likeCounter = target.closest('.like-counter');
       handleLikeClick(likeCounter);
     }
   });
 }
-
-/**
- * Инициализация обработчиков событий для постов блога
- */
 function initBlogEvents() {
   const blogContainer = document.getElementById('blog-posts');
   if (!blogContainer) return;
@@ -435,9 +397,6 @@ function initBlogEvents() {
   });
 }
 
-/**
- * Инициализация обработчиков событий для услуг
- */
 function initServiceEvents() {
   const servicesContainer = document.getElementById('services-list');
   if (!servicesContainer) return;
@@ -456,17 +415,13 @@ function initServiceEvents() {
   });
 }
 
-// ===== ФУНКЦИИ ОБРАБОТКИ ДЕЙСТВИЙ =====
-
 /**
  * Обработка добавления товара в корзину
  * @param {object} card - Данные карточки товара
  */
 function handleAddToCart(card) {
-  // Получаем корзину из localStorage
   const cart = JSON.parse(localStorage.getItem('cart') || '[]');
   
-  // Проверяем, есть ли уже этот товар в корзине
   const existingItem = cart.find(item => item.id === card.id);
   
   if (existingItem) {
@@ -480,10 +435,8 @@ function handleAddToCart(card) {
     });
   }
   
-  // Сохраняем корзину в localStorage
   localStorage.setItem('cart', JSON.stringify(cart));
   
-  // Показываем уведомление
   showNotification(`${card.name} added to cart!`, 'success');
   
   console.log('Корзина обновлена:', cart);
@@ -493,49 +446,55 @@ function handleAddToCart(card) {
  * Обработка клика по счётчику лайков
  * @param {HTMLElement} likeCounter - Элемент счётчика лайков
  */
-function handleLikeClick(likeCounter) {
-  const itemId = likeCounter.getAttribute('data-item-id');
-  const storageKey = `like_${itemId}`;
-  
-  // Получаем текущее состояние
-  const saved = localStorage.getItem(storageKey);
-  let state = saved ? JSON.parse(saved) : { count: 0, isLiked: false };
-  
-  // Переключаем состояние
-  state.isLiked = !state.isLiked;
-  state.count += state.isLiked ? 1 : -1;
-  
-  // Обновляем DOM
-  const heartEl = likeCounter.querySelector('.like-heart');
-  const countEl = likeCounter.querySelector('.like-count');
-  
-  heartEl.innerHTML = state.isLiked ? '♥' : '♡';
-  countEl.textContent = state.count;
-  
-  // Добавляем/убираем класс
-  if (state.isLiked) {
-    likeCounter.classList.add('liked');
-    animateLike(likeCounter);
-  } else {
-    likeCounter.classList.remove('liked');
-  }
-  
-  // Сохраняем в localStorage
-  localStorage.setItem(storageKey, JSON.stringify(state));
+function initLikeCounters() {
+    const counters = document.querySelectorAll('.like-counter');
+    counters.forEach(counter => {
+        const itemId = counter.getAttribute('data-item-id');
+        const storageKey = `like_${itemId}`;
+        const saved = localStorage.getItem(storageKey);
+        let state = saved ? JSON.parse(saved) : { count: 0, isLiked: false };
+
+        const heartEl = counter.querySelector('.like-heart');
+        const countEl = counter.querySelector('.like-count');
+
+        heartEl.innerHTML = state.isLiked ? '♥' : '♡';
+        countEl.textContent = state.count;
+
+        if (state.isLiked) {
+            counter.classList.add('liked');
+        } else {
+            counter.classList.remove('liked');
+        }
+    });
 }
 
-/**
- * Анимация лайка
- * @param {HTMLElement} element - Элемент для анимации
- */
-function animateLike(element) {
-  element.style.transition = 'transform 0.2s ease';
-  element.style.transform = 'scale(1.2)';
+
+function handleLikeClick(likeCounter) {
+    const itemId = likeCounter.getAttribute('data-item-id');
+    const storageKey = `like_${itemId}`;
+    const saved = localStorage.getItem(storageKey);
+    let state = saved ? JSON.parse(saved) : { count: 0, isLiked: false };
+
+    state.isLiked = !state.isLiked;
+    state.count += state.isLiked ? 1 : -1;
   
-  setTimeout(() => {
-    element.style.transform = 'scale(1)';
-  }, 200);
+    if (state.count < 0) state.count = 0; 
+
+    const heartEl = likeCounter.querySelector('.like-heart');
+    const countEl = likeCounter.querySelector('.like-count');
+
+    heartEl.innerHTML = state.isLiked ? '♥' : '♡';
+    countEl.textContent = state.count;
+
+    if (state.isLiked) {
+        likeCounter.classList.add('liked');
+    } else {
+        likeCounter.classList.remove('liked');
+    }
+
+    localStorage.setItem(storageKey, JSON.stringify(state));
 }
+
 
 /**
  * Обработка клика по посту блога
@@ -551,11 +510,9 @@ function handleBlogPostClick(card) {
  * @param {object} card - Данные услуги
  */
 function handleServiceOrder(card) {
-  // Проверяем, авторизован ли пользователь
   const currentUser = localStorage.getItem('currentUser');
   
   if (!currentUser) {
-    // Открываем модальное окно входа
     if (typeof openAuthModal === 'function') {
       openAuthModal();
     }
@@ -595,50 +552,54 @@ function showNotification(message, type = 'info') {
   
   document.body.appendChild(notification);
   
-  // Удаляем через 3 секунды
   setTimeout(() => {
     notification.style.animation = 'slideOut 0.3s ease-out';
     setTimeout(() => notification.remove(), 300);
   }, 3000);
 }
 
-// ===== ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ СТРАНИЦЫ =====
-
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('🚀 Scripts.js инициализирован');
-  
-  // Рендерим карточки на главной странице
-  renderProducts();
-  renderTreats();
-  
-  // Добавляем стили для анимаций уведомлений
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes slideIn {
-      from {
-        transform: translateX(400px);
-        opacity: 0;
-      }
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-    @keyframes slideOut {
-      from {
-        transform: translateX(0);
-        opacity: 1;
-      }
-      to {
-        transform: translateX(400px);
-        opacity: 0;
-      }
-    }
-  `;
-  document.head.appendChild(style);
-});
+    console.log('Scripts.js инициализирован');
+    renderProducts();
+    renderTreats();
+    
+    initLikeCounters(); 
 
-// ===== ЭКСПОРТ ФУНКЦИЙ В ГЛОБАЛЬНУЮ ОБЛАСТЬ (BOM) =====
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideIn { from { transform: translateX(400px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(400px); opacity: 0; } }
+
+        .like-counter {
+            cursor: pointer;
+            user-select: none; 
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: transform 0.1s ease;
+        }
+        
+        .like-counter:active {
+            transform: scale(0.9); 
+        }
+
+        .like-counter .like-heart {
+            font-size: 1.2em;
+            transition: color 0.3s ease, transform 0.2s ease;
+            color: #999; 
+        }
+        .like-counter.liked .like-heart {
+            color: #e74c3c; 
+            animation: heartPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes heartPop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.5); }
+            100% { transform: scale(1); }
+        }
+    `;
+    document.head.appendChild(style);
+});
 
 window.cards = cards;
 window.getCardById = getCardById;

@@ -18,3 +18,7 @@ html, body {
 *::after {
     box-sizing: border-box;
 }
+body {
+    /* Добавляем правый отступ, чтобы компенсировать исчезновение скроллбара */
+    padding-right: var(--scrollbar-width, 0px);
+}

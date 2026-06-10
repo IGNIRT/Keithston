@@ -1,5 +1,3 @@
-// ===== СИСТЕМА АУТЕНТИФИКАЦИИ С EMAIL И ПРАВАМИ АДМИНА =====
-// База данных пользователей
 let usersDB = {
     "admin": {
         name: "Administrator",
@@ -15,7 +13,6 @@ let failedAttempts = 0;
 let isLocked = false;
 let isOnCooldown = false;
 
-// ===== ИНИЦИАЛИЗАЦИЯ =====
 document.addEventListener('DOMContentLoaded', function() {
     initAuthSystem();
     loadUserData();
@@ -45,7 +42,6 @@ function initAuthSystem() {
     setupRealTimeValidation();
 }
 
-// ===== КНОПКА LOGIN В ПРАВОМ ВЕРХНЕМ УГЛУ =====
 function createTopRightLoginButton() {
     const existingBtn = document.querySelector('.auth-btn-top-right');
     if (existingBtn) existingBtn.remove();
@@ -53,9 +49,9 @@ function createTopRightLoginButton() {
     const btn = document.createElement('button');
     btn.className = 'auth-btn-top-right';
     btn.id = 'topRightAuthBtn';
-
+    btn.type = 'button'; 
     if (currentUser) {
-        btn.textContent = `Выйти (${currentUser})`;
+        btn.textContent = `Exit (${currentUser})`;
         btn.classList.add('logged-in');
         btn.onclick = logout;
     } else {
@@ -66,11 +62,16 @@ function createTopRightLoginButton() {
     document.body.appendChild(btn);
 }
 
-// ===== УПРАВЛЕНИЕ POPUP ОКНАМИ =====
+function getScrollbarWidth() {
+    return window.innerWidth - document.documentElement.clientWidth;
+}
+
 function openAuthModal() {
     const overlay = document.getElementById('authModalOverlay');
     if (overlay) {
         overlay.classList.add('active');
+        const scrollbarWidth = getScrollbarWidth();
+        document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
         document.body.style.overflow = 'hidden';
         updateAuthStatus();
         clearAllForms();
@@ -82,6 +83,7 @@ function closeAuthModal() {
     if (overlay) {
         overlay.classList.remove('active');
         document.body.style.overflow = '';
+        document.documentElement.style.setProperty('--scrollbar-width', '0px');
         clearAllForms();
         hideAllMessages();
     }
@@ -104,7 +106,6 @@ function switchAuthTab(tab) {
     clearAllForms();
 }
 
-// ===== ОЧИСТКА ФОРМ =====
 function clearAllForms() {
     const inputs = document.querySelectorAll('.auth-form-group input');
     inputs.forEach(input => {
@@ -126,58 +127,60 @@ function clearForm(formId) {
     }
 }
 
-// ===== ВАЛИДАЦИЯ В РЕАЛЬНОМ ВРЕМЕНИ =====
 function setupRealTimeValidation() {
     const regLogin = document.getElementById('regLogin');
-    if (regLogin) {
-        regLogin.addEventListener('input', function() {
-            validateLoginField(this);
-        });
-    }
+    if (regLogin) regLogin.addEventListener('input', function() { validateLoginField(this); });
 
     const regEmail = document.getElementById('regEmail');
-    if (regEmail) {
-        regEmail.addEventListener('input', function() {
-            validateEmailField(this);
-        });
-    }
+    if (regEmail) regEmail.addEventListener('input', function() { validateEmailField(this); });
 
     const regPass = document.getElementById('regPass');
-    if (regPass) {
-        regPass.addEventListener('input', function() {
-            validatePasswordField(this);
-        });
-    }
+    if (regPass) regPass.addEventListener('input', function() { validatePasswordField(this); });
 
     const regPassConfirm = document.getElementById('regPassConfirm');
-    if (regPassConfirm) {
-        regPassConfirm.addEventListener('input', function() {
-            validateConfirmPasswordField(this);
+    if (regPassConfirm) regPassConfirm.addEventListener('input', function() { validateConfirmPasswordField(this); });
+
+    const loginIdentifier = document.getElementById('loginIdentifier');
+    if (loginIdentifier) {
+        loginIdentifier.addEventListener('input', function() {
+            validateLoginIdentifier(this);
         });
+    }
+}
+
+function validateLoginIdentifier(input) {
+    const value = input.value.trim();
+    removeFieldError(input);
+    
+    if (value.length === 0) return true;
+
+    let userFound = false;
+
+    if (value.includes('@')) {
+        // Проверяем как email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+            showFieldError(input, 'Введите корректный email');
+            return false;
+        }
+        userFound = Object.values(usersDB).some(user => user.email === value);
+    } else {
+        userFound = !!usersDB[value];
     }
 
-    const loginUser = document.getElementById('loginUser');
-    if (loginUser) {
-        loginUser.addEventListener('input', function() {
-            validateLoginInput(this);
-        });
+    if (!userFound) {
+        showFieldError(input, 'Пользователь не найден');
+        return false;
     }
 
-    const loginEmail = document.getElementById('loginEmail');
-    if (loginEmail) {
-        loginEmail.addEventListener('input', function() {
-            validateLoginEmailInput(this);
-        });
-    }
+    input.classList.add('success');
+    return true;
 }
 
 function validateEmailField(input) {
     const value = input.value.trim();
     removeFieldError(input);
-    
-    if (value.length === 0) {
-        return true;
-    }
+    if (value.length === 0) return true;
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(value)) {
@@ -195,37 +198,10 @@ function validateEmailField(input) {
     return true;
 }
 
-function validateLoginEmailInput(input) {
-    const value = input.value.trim();
-    removeFieldError(input);
-    
-    if (value.length === 0) {
-        return true;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(value)) {
-        showFieldError(input, 'Введите корректный email');
-        return false;
-    }
-
-    const userExists = Object.values(usersDB).some(user => user.email === value);
-    if (!userExists) {
-        showFieldError(input, 'Пользователь с таким email не найден');
-        return false;
-    }
-
-    input.classList.add('success');
-    return true;
-}
-
 function validateLoginField(input) {
     const value = input.value.trim();
     removeFieldError(input);
-    
-    if (value.length === 0) {
-        return true;
-    }
+    if (value.length === 0) return true;
 
     if (value.length < 3) {
         showFieldError(input, 'Логин должен содержать минимум 3 символа');
@@ -254,10 +230,7 @@ function validateLoginField(input) {
 function validatePasswordField(input) {
     const value = input.value;
     removeFieldError(input);
-    
-    if (value.length === 0) {
-        return true;
-    }
+    if (value.length === 0) return true;
 
     if (value.length < 8) {
         showFieldError(input, 'Пароль должен содержать минимум 8 символов');
@@ -293,30 +266,10 @@ function validateConfirmPasswordField(input) {
     const password = document.getElementById('regPass').value;
     const confirm = input.value;
     removeFieldError(input);
-    
-    if (confirm.length === 0) {
-        return true;
-    }
+    if (confirm.length === 0) return true;
 
     if (confirm !== password) {
         showFieldError(input, 'Пароли не совпадают');
-        return false;
-    }
-
-    input.classList.add('success');
-    return true;
-}
-
-function validateLoginInput(input) {
-    const value = input.value.trim();
-    removeFieldError(input);
-    
-    if (value.length === 0) {
-        return true;
-    }
-
-    if (!usersDB[value]) {
-        showFieldError(input, 'Пользователь не найден');
         return false;
     }
 
@@ -337,25 +290,16 @@ function showFieldError(input, message) {
     const errorDiv = document.createElement('div');
     errorDiv.className = 'field-error';
     errorDiv.textContent = message;
-    errorDiv.style.cssText = `
-        color: #c62828;
-        font-size: 12px;
-        margin-top: 5px;
-        padding-left: 5px;
-    `;
-
+    errorDiv.style.cssText = `color: #c62828; font-size: 12px; margin-top: 5px; padding-left: 5px;`;
     input.parentElement.appendChild(errorDiv);
 }
 
 function removeFieldError(input) {
     input.classList.remove('error', 'success');
     const errorDiv = input.parentElement.querySelector('.field-error');
-    if (errorDiv) {
-        errorDiv.remove();
-    }
+    if (errorDiv) errorDiv.remove();
 }
 
-// ===== ВАЛИДАЦИЯ И ОБРАБОТКА ФОРМ =====
 function handleRegister() {
     const nameInput = document.getElementById('regName');
     const loginInput = document.getElementById('regLogin');
@@ -417,9 +361,7 @@ function handleRegister() {
     };
 
     saveUserToLocalStorage(login, name, email);
-
-    showAuthMessage(`✅ Пользователь ${login} успешно зарегистрирован!`, 'success'); 
-
+    showAuthMessage(`Пользователь ${login} успешно зарегистрирован!`, 'success'); 
     clearForm('registerForm');
 
     setTimeout(() => {
@@ -433,41 +375,34 @@ function handleRegister() {
 }
 
 function handleLogin() {
-    const loginType = document.querySelector('.login-type-selector input:checked');
-    const loginMethod = loginType ? loginType.value : 'username';
-    let login = '';
-    let pass = '';
-
-    if (loginMethod === 'username') {
-        const loginInput = document.getElementById('loginUser');
-        const passInput = document.getElementById('loginPass');
-        login = loginInput.value.trim();
-        pass = passInput.value;
-    } else {
-        const emailInput = document.getElementById('loginEmail');
-        const passInput = document.getElementById('loginPass');
-        const email = emailInput.value.trim();
-        pass = passInput.value;
-        
-        const user = Object.values(usersDB).find(u => u.email === email);
-        login = user ? Object.keys(usersDB).find(key => usersDB[key] === user) : '';
-    }
+    const identifierInput = document.getElementById('loginIdentifier');
+    const passInput = document.getElementById('loginPass');
+    const identifier = identifierInput ? identifierInput.value.trim() : '';
+    const pass = passInput ? passInput.value : '';
 
     hideAllMessages();
 
-    if (!login || !pass) {
+    if (!identifier || !pass) {
         showAuthMessage("Заполните все поля!", 'error');
         return;
     }
 
     if (isLocked) {
-        showAuthMessage("🚫 Доступ заблокирован после 3 неудачных попыток.", 'error');
+        showAuthMessage("Доступ заблокирован после 3 неудачных попыток.", 'error');
         return;
     }
 
     if (isOnCooldown) {
-        showAuthMessage("⏳ Подождите окончания задержки...", 'error');
+        showAuthMessage("Подождите окончания задержки...", 'error');
         return;
+    }
+
+    let login = '';
+    if (identifier.includes('@')) {
+        const user = Object.values(usersDB).find(u => u.email === identifier);
+        login = user ? Object.keys(usersDB).find(key => usersDB[key] === user) : '';
+    } else {
+        login = identifier;
     }
 
     if (!usersDB[login]) {
@@ -491,10 +426,9 @@ function handleLogin() {
     updateAuthStatus();
     saveCurrentUser(login);
 
-    showAuthMessage(`✅ Добро пожаловать, ${usersDB[login].name}!`, 'success');
+    showAuthMessage(`Добро пожаловать, ${usersDB[login].name}!`, 'success');
 
-    const passInput = document.getElementById('loginPass');
-    if(passInput) passInput.value = '';
+    if (passInput) passInput.value = '';
 
     setTimeout(() => {
         closeAuthModal();
@@ -541,7 +475,6 @@ function saveUserToLocalStorage(login, name, email) {
             registeredAt: new Date().toISOString()
         };
         localStorage.setItem('usersDB', JSON.stringify(users));
-        console.log('✅ Пользователь сохранён в LocalStorage');
     } catch (e) {
         console.error('Ошибка сохранения в LocalStorage:', e);
     }
@@ -550,7 +483,6 @@ function saveUserToLocalStorage(login, name, email) {
 function saveCurrentUser(login) {
     try {
         localStorage.setItem('currentUser', login);
-        console.log('✅ Текущий пользователь сохранён');
     } catch (e) {
         console.error('Ошибка сохранения текущего пользователя:', e);
     }
@@ -572,7 +504,6 @@ function loadUserData() {
                     };
                 }
             }
-            console.log('✅ Загружено пользователей из LocalStorage:', Object.keys(users).length);
         }
         
         const savedCurrentUser = localStorage.getItem('currentUser');
@@ -581,7 +512,6 @@ function loadUserData() {
             updateAuthStatus();
             createTopRightLoginButton();
             showAdminPanelIfAdmin();
-            console.log('✅ Восстановлена сессия пользователя:', currentUser);
         }
     } catch (e) {
         console.error('Ошибка загрузки из LocalStorage:', e);
@@ -594,20 +524,18 @@ function logout() {
     updateAuthStatus();
     createTopRightLoginButton();
     removeAdminPanel();
-    showNotification('👋 Вы вышли из системы', 'info');
+    showNotification('Вы вышли из системы', 'info');
 }
 
-// ===== ПАНЕЛЬ АДМИНИСТРАТОРА =====
 function showAdminPanelIfAdmin() {
     if (!currentUser || !usersDB[currentUser] || usersDB[currentUser].role !== 'admin') return;
-    
     removeAdminPanel();
 
     const panel = document.createElement('div');
     panel.className = 'admin-panel';
     panel.id = 'adminPanel';
     panel.innerHTML = `
-        <h3>🔐 Панель администратора</h3>
+        <h3>Панель администратора</h3>
         <div class="stats-container">
             <div class="stat-card">
                 <p class="stat-value">${Object.keys(usersDB).length}</p>
@@ -619,13 +547,12 @@ function showAdminPanelIfAdmin() {
             </div>
         </div>
         <div class="admin-actions">
-            <button class="admin-btn" onclick="viewAllUsers()">👥 Просмотр пользователей</button>
-            <button class="admin-btn" onclick="viewStatistics()">📊 Статистика</button>
-            <button class="admin-btn" onclick="manageContent()">📝 Управление контентом</button>
-            <button class="admin-btn danger" onclick="clearAllData()">🗑️ Очистить данные</button>
+            <button class="admin-btn" type="button" onclick="viewAllUsers()">Просмотр пользователей</button>
+            <button class="admin-btn" type="button" onclick="viewStatistics()">Статистика</button>
+            <button class="admin-btn" type="button" onclick="manageContent()">Управление контентом</button>
+            <button class="admin-btn danger" type="button" onclick="clearAllData()">Очистить данные</button>
         </div>
     `;
-
     document.body.insertBefore(panel, document.body.firstChild);
 }
 
@@ -636,41 +563,39 @@ function removeAdminPanel() {
 
 function viewAllUsers() {
     if (!hasPermission('view_users')) {
-        showNotification('❌ У вас нет прав для просмотра пользователей', 'error');
+        showNotification('У вас нет прав для просмотра пользователей', 'error');
         return;
     }
     const userList = Object.keys(usersDB).map(login => {
         const user = usersDB[login];
         return `${login} (${user.email}) - ${user.role}`;
     }).join('\n');
-
-    alert('📋 Список пользователей:\n\n' + userList);
+    alert('Список пользователей:\n\n' + userList);
 }
 
 function viewStatistics() {
     if (!hasPermission('view_stats')) {
-        showNotification('❌ У вас нет прав для просмотра статистики', 'error');
+        showNotification('У вас нет прав для просмотра статистики', 'error');
         return;
     }
     const totalUsers = Object.keys(usersDB).length;
     const adminCount = Object.values(usersDB).filter(u => u.role === 'admin').length;
     const regularUsers = totalUsers - adminCount;
-
-    alert(`📊 Статистика:\n\nВсего пользователей: ${totalUsers}\nАдминистраторов: ${adminCount}\nОбычных пользователей: ${regularUsers}`);
+    alert(`Статистика:\n\nВсего пользователей: ${totalUsers}\nАдминистраторов: ${adminCount}\nОбычных пользователей: ${regularUsers}`);
 }
 
 function manageContent() {
     if (!hasPermission('manage_content')) {
-        showNotification('❌ У вас нет прав для управления контентом', 'error');
+        showNotification('У вас нет прав для управления контентом', 'error');
         return;
     }
-    showNotification('📝 Режим управления контентом активирован', 'success');
+    showNotification('Режим управления контентом активирован', 'success');
 }
 
 function clearAllData() {
-    if (!confirm('⚠️ Вы уверены? Все данные будут удалены!')) return;
+    if (!confirm('Вы уверены? Все данные будут удалены!')) return;
     localStorage.clear();
-    showNotification('🗑️ Все данные очищены', 'success');
+    showNotification('Все данные очищены', 'success');
     setTimeout(() => location.reload(), 1500);
 }
 
@@ -679,13 +604,12 @@ function hasPermission(permission) {
     return usersDB[currentUser].permissions.includes(permission);
 }
 
-// ===== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ =====
 function updateAuthStatus() {
     const status = document.getElementById('authUserStatus');
     if (status) {
         if (currentUser && usersDB[currentUser]) {
             const user = usersDB[currentUser];
-            status.textContent = `👤 Вы вошли как: ${user.name} (${currentUser}) | Роль: ${user.role}`;
+            status.textContent = `Вы вошли как: ${user.name} (${currentUser}) | Роль: ${user.role}`;
             status.style.display = 'block';
         } else {
             status.style.display = 'none';
@@ -704,9 +628,7 @@ function showAuthMessage(text, type) {
 
 function hideAllMessages() {
     const msgBox = document.getElementById('authMessageBox');
-    if (msgBox) {
-        msgBox.style.display = 'none';
-    }
+    if (msgBox) msgBox.style.display = 'none';
 }
 
 function showNotification(message, type = 'info') {
@@ -716,20 +638,11 @@ function showNotification(message, type = 'info') {
     const bgColor = type === 'success' ? '#4CAF50' : type === 'error' ? '#f44336' : '#2196F3';
 
     notification.style.cssText = `
-        position: fixed;
-        top: 80px;
-        right: 30px;
-        padding: 15px 25px;
-        background: ${bgColor};
-        color: white;
-        border-radius: 8px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        z-index: 10000;
-        animation: slideIn 0.3s ease-out;
-        font-family: 'Inter', sans-serif;
-        font-weight: 500;
+        position: fixed; top: 80px; right: 30px; padding: 15px 25px;
+        background: ${bgColor}; color: white; border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 10000;
+        animation: slideIn 0.3s ease-out; font-family: 'Inter', sans-serif; font-weight: 500;
     `;
-
     document.body.appendChild(notification);
 
     setTimeout(() => {
@@ -745,11 +658,7 @@ function levenshteinDistance(a, b) {
     for (let j = 1; j <= b.length; j++) {
         for (let i = 1; i <= a.length; i++) {
             const indicator = a.charAt(i - 1) === b.charAt(j - 1) ? 0 : 1;
-            matrix[j][i] = Math.min(
-                matrix[j][i - 1] + 1,
-                matrix[j - 1][i] + 1,
-                matrix[j - 1][i - 1] + indicator
-            );
+            matrix[j][i] = Math.min(matrix[j][i - 1] + 1, matrix[j - 1][i] + 1, matrix[j - 1][i - 1] + indicator);
         }
     }
     return matrix[b.length][a.length];
@@ -760,103 +669,28 @@ function validatePassword(login, password, isRegistration) {
     let errorMsg = "";
     
     if (password.length < 8) {
-        errorFound = true;
-        errorMsg = "Пароль должен содержать не менее 8 символов.";
+        errorFound = true; errorMsg = "Пароль должен содержать не менее 8 символов.";
     } else if (["password", "123456", "admin", "qwerty", "student", "letmein"].includes(password.toLowerCase())) {
-        errorFound = true;
-        errorMsg = "Пароль найден в словаре запрещённых.";
+        errorFound = true; errorMsg = "Пароль найден в словаре запрещённых.";
     } else if (isRegistration && usersDB[login] && usersDB[login].history.length > 0) {
         if (usersDB[login].history.some(h => h.password === password)) {
-            errorFound = true;
-            errorMsg = "Этот пароль уже использовался (журнал истории).";
+            errorFound = true; errorMsg = "Этот пароль уже использовался (журнал истории).";
         } else {
             for (let hist of usersDB[login].history) {
                 let old = hist.password.toLowerCase();
                 let newP = password.toLowerCase();
                 if (newP.includes(old) || old.includes(newP) || levenshteinDistance(newP, old) <= 2) {
-                    errorFound = true;
-                    errorMsg = `Пароль слишком похож на предыдущий: "${hist.password}"`;
+                    errorFound = true; errorMsg = `Пароль слишком похож на предыдущий: "${hist.password}"`;
                     break;
                 }
             }
         }
     }
-
     return { errorFound, errorMsg };
 }
 
-// ===== ЖУРНАЛ ПАРОЛЕЙ =====
-function openJournal() {
-    if (!currentUser) {
-        showAuthMessage("Сначала войдите в систему для просмотра журнала!", 'error');
-        return;
-    }
-    const tbody = document.getElementById('journalBody');
-    if(!tbody) return;
-    
-    tbody.innerHTML = '';
 
-    const usersToShow = hasPermission('view_users') ? Object.keys(usersDB) : [currentUser];
-
-    for (let login of usersToShow) {
-        if (!hasPermission('view_users') && login !== currentUser) continue;
-
-        if (!usersDB[login] || usersDB[login].history.length === 0) {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `<td>${login}</td><td colspan="2" style="text-align: center; color: #999;">Нет данных</td>`;
-            tbody.appendChild(tr);
-            continue;
-        }
-
-        usersDB[login].history.forEach((item, index) => {
-            const tr = document.createElement('tr');
-            if (index === usersDB[login].history.length - 1) tr.classList.add('new-entry');
-            if (login === "admin") tr.classList.add('admin-row');
-            
-            tr.innerHTML = `<td>${login}</td><td>${item.password}</td><td>${item.date}</td>`;
-            tbody.appendChild(tr);
-        });
-    }
-
-    const journalModal = document.getElementById('journalModalOverlay');
-    if (journalModal) {
-        journalModal.classList.add('active');
-    }
-}
-
-function closeJournal() {
-    const journalModal = document.getElementById('journalModalOverlay');
-    if (journalModal) {
-        journalModal.classList.remove('active');
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const journalOverlay = document.getElementById('journalModalOverlay');
-    if (journalOverlay) {
-        journalOverlay.addEventListener('click', function(e) {
-            if (e.target === this) closeJournal();
-        });
-    }
-});
-
-function toggleLoginMethod() {
-    const loginType = document.querySelector('.login-type-selector input:checked');
-    if(!loginType) return;
-    
-    const byUsername = document.getElementById('loginByUsername');
-    const byEmail = document.getElementById('loginByEmail');
-    
-    if (loginType.value === 'username') {
-        if(byUsername) byUsername.style.display = 'block';
-        if(byEmail) byEmail.style.display = 'none';
-    } else {
-        if(byUsername) byUsername.style.display = 'none';
-        if(byEmail) byEmail.style.display = 'block';
-    }
-}
-
-// ===== ЭКСПОРТ ФУНКЦИЙ В ГЛОБАЛЬНУЮ ОБЛАСТЬ =====
+// Экспорт функций в глобальную область
 window.openAuthModal = openAuthModal;
 window.closeAuthModal = closeAuthModal;
 window.switchAuthTab = switchAuthTab;
@@ -869,6 +703,5 @@ window.viewAllUsers = viewAllUsers;
 window.viewStatistics = viewStatistics;
 window.manageContent = manageContent;
 window.clearAllData = clearAllData;
-window.toggleLoginMethod = toggleLoginMethod;
 window.createTopRightLoginButton = createTopRightLoginButton;
 window.showAdminPanelIfAdmin = showAdminPanelIfAdmin;
